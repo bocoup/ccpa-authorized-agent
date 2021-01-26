@@ -1,0 +1,18 @@
+---
+version: '2'
+services:
+  web:
+    build: ./src/webapp
+    ports:
+      - "5000:5000"
+    env_file: .env
+    depends_on:
+      - db
+    volumes:
+      - ./src/webapp:/opt/webapp
+  db:
+    # 12 is the latest version offered by Heroku
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    env_file: .env

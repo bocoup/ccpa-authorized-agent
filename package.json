@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "ccpa-authorized-agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.18.0"
+  }
+}
