@@ -17,20 +17,20 @@ TO GRANT ONE OR MORE, BUT FEWER THAN ALL, OF THE FOLLOWING POWERS, INITIAL THE L
 
 TO WITHHOLD A POWER, DO NOT INITIAL THE LINE IN FRONT OF IT. YOU MAY, BUT NEED NOT, CROSS OUT EACH POWER WITHHELD.
 
-________ (A) Real property transactions.
-________ (B) Tangible personal property transactions.
-________ (C) Stock and bond transactions.
-________ (D) Commodity and option transactions.
-________ (E) Banking and other financial institution transactions.
-________ (F) Business operating transactions.
-________ (G) Insurance and annuity transactions.
-________ (H) Estate, trust, and other beneficiary transactions.
-________ (I) Claims and litigation.
-________ (J) Personal and family maintenance.
-________ (K) Benefits from social security, medicare, medicaid, or other governmental programs, or civil or military service.
-________ (L) Retirement plan transactions.
-________ (M) Tax matters.
-________ (N) ALL OF THE POWERS LISTED ABOVE.
+________ (A) Real property transactions.    
+________ (B) Tangible personal property transactions.   
+________ (C) Stock and bond transactions.   
+________ (D) Commodity and option transactions.   
+________ (E) Banking and other financial institution transactions.   
+________ (F) Business operating transactions.   
+________ (G) Insurance and annuity transactions.   
+________ (H) Estate, trust, and other beneficiary transactions.   
+________ (I) Claims and litigation.   
+________ (J) Personal and family maintenance.   
+________ (K) Benefits from social security, medicare, medicaid, or other governmental programs, or civil or military service.   
+________ (L) Retirement plan transactions.   
+________ (M) Tax matters.   
+________ (N) ALL OF THE POWERS LISTED ABOVE.   
 
 YOU NEED NOT INITIAL ANY OTHER LINES IF YOU INITIAL LINE (N).
 
