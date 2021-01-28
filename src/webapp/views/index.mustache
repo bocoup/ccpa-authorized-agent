@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<title>Join our California Authorized Agent Study!</title>
+	</head>
+	<body>
+		<main>
+			<div class="column">
+				<h1>Volunteer to test the Authorized Agent feature of California's new privacy law!</h1>
+
+				<p>The California Consumer Privacy Act (CCPA) gives you, as a California consumer, the right to stop companies from selling your personal information to advertisers and other third parties. Best of all, you don’t have to go around to all of the thousands of companies using your personal information. The CCPA lets you designate an "authorized agent" to contact companies about your data for you.</p>
+
+				<p>This Consumer Reports experiment is designed to test how we might automatically send your data preferences to corporations, data brokers and other firms. Just provide us with your contact information and give us permission. We’ll do the rest.</p>
+
+				<h2>How it works</h2>
+
+				<ol>
+					<li>Sign up here with your California address, email address, and phone number.</li>
+					<li>Sign a simple letter giving us permission to act as your authorized agent.</li>
+					<li>We'll keep you up to date on our progress.</li>
+				</ol>
+
+				<p>You'll be added to a weekly mailing list and receive updates on the study, including more info on the opaque market for personal data, along with reports on which companies have received your opt out requests.</p>
+
+				<p>Visitor count: {{count}}</p>
+			</div>
+
+			<div class="column">
+				<h2>Sign up to Volunteer</h2>
+
+				<form class="sign-up" method="POST" action="/sign-up">
+					<div class="contact first-name">
+						<label for="first-name">First Name</label>
+						<input id="first-name" type="text" placeholder="First Name">
+					</div><!--
+
+					--><div class="contact last-name">
+						<label for="last-name">Last Name</label>
+						<input id="last-name" type="text" placeholder="Last Name">
+					</div><!--
+
+					--><div class="contact address-street">
+						<label for="address-street">California Street Address</label>
+						<input id="address-street" type="text" placeholder="California Street Address">
+					</div><!--
+
+					--><div class="contact address-city">
+						<label for="address-city">City</label>
+						<input id="address-city" type="text" placeholder="City">
+					</div><!--
+
+					--><div class="contact address-state">
+						<label for="address-state">State</label>
+						<input id="address-state" type="text" value="CA">
+					</div><!--
+
+					--><div class="contact address-zipcode">
+						<label for="address-zipcode">Zip Code</label>
+						<input id="address-zipcode" type="text" placeholder="Zip Code">
+					</div><!--
+
+					--><div class="contact email">
+						<label for="email">Email</label>
+						<input id="email" type="text" placeholder="Email">
+					</div><!--
+
+					--><div class="contact phone">
+						<label for="phone">Mobile Phone Number</label>
+						<input id="phone" type="text" placeholder="Mobile Phone Number">
+					</div>
+
+					<div class="consent consent-participation">
+						<input type="checkbox" id="consent-participation">
+						<label for="consent-participation">Consent to participate in research</label>
+					</div>
+
+					<div class="consent consent-followup">
+						<input type="checkbox" id="consent-followup">
+						<label for="consent-followup">Consent to be followed up with about how it went</label>
+					</div>
+
+					<div class="consent consent-category3">
+						<input type="checkbox" id="consent-category3">
+						<label for="consent-category3">Category 3 of consent</label>
+					</div>
+
+					<p>We appreciate your consent!</p>
+
+					<div class="controls">
+						<input type="submit" value="Volunteer">
+					</div>
+				</form>
+			</div>
+		</main>
+	</body>
+</html>

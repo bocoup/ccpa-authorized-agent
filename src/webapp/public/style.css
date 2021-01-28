@@ -1,0 +1,110 @@
+html {
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+main {
+	max-width: 1024px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+h1 {
+	font-size: 1.2em;
+}
+
+h2 {
+	font-size: 1.1em;
+}
+
+.column {
+	width: 50%;
+	float: left;
+	padding: 1em;
+}
+
+.sign-up {
+	position: relative;
+}
+
+.sign-up input {
+	border: solid 2px #aaa;
+	border-radius: 0.2em;
+}
+
+.contact {
+	display: inline-block;
+	width: 100%;
+	margin-top: 0.5em;
+}
+.contact label {
+	color: #777;
+	margin-bottom: 0.2em;
+	display: block;
+	font-size: 0.9em;
+}
+.contact input {
+	padding: 1em;
+	width: 100%;
+}
+
+.contact.first-name, .contact.email {
+	width: 49%;
+	margin-right: 2%;
+}
+.contact.last-name, .contact.phone {
+	width: 49%;
+}
+.contact.address-street {
+	width: 100%;
+}
+.contact.address-city {
+	width: 49%;
+	margin-right: 2%;
+}
+.contact.address-state {
+	width: 10%;
+	margin-right: 2%;
+}
+.contact.address-zipcode {
+	width: 37%
+}
+
+.consent {
+	display: block;
+}
+.consent-participation {
+	margin-top: 3em;
+}
+
+.controls {
+	text-align: right;
+}
+
+.controls input[type="submit"] {
+	border-width: 0;
+	padding: 1em 2em;
+
+	background-color: #00AE4D;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+	.column {
+		width: 100%;
+	}
+
+	.contact.contact {
+		width: 100%;
+	}
+}

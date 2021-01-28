@@ -4,27 +4,31 @@ const debug = require('debug')('index');
 const {Visit} = require('./models/');
 // PAAS_COUPLING: Heroku provides the `PORT` environment variable.
 const {PORT} = process.env;
+const express = require('express');
+const mustacheExpress = require('mustache-express');
 
-http.createServer(async (req, res) => {
+const app = express();
+
+app.set('views', './views');
+app.set('view engine', 'mustache');
+app.engine('mustache', mustacheExpress());
+
+app.use(express.static('public'));
+
+app.get('/', async (req, res, next) => {
   try {
     await Visit.create({});
     const count = (await Visit.findAll()).length;
-
-    res.writeHead(200);
-    res.end(`<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Visit counter</title>
-  </head>
-  <body>
-    <p>Visitor count: ${count}</p>
-  </body>
-</html>`);
+    res.render('index', {count});
   } catch (error) {
-    res.writeHead(500);
-    res.end(String(error));
+    next(error);
   }
-}).listen(PORT, () => {
+});
+
+app.post('/sign-up', (req, res) => {
+  res.redirect('/');
+});
+
+app.listen(PORT, () => {
   debug(`Server initialized and listening on port ${PORT}.`);
 });
