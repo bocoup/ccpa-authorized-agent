@@ -2,6 +2,8 @@
 const http = require('http');
 const debug = require('debug')('index');
 const {Visit} = require('./models/');
+// PAAS_COUPLING: Heroku provides the `PORT` environment variable.
+const {PORT} = process.env;
 
 http.createServer(async (req, res) => {
   try {
@@ -13,6 +15,7 @@ http.createServer(async (req, res) => {
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <title>Visit counter</title>
   </head>
   <body>
     <p>Visitor count: ${count}</p>
@@ -22,6 +25,6 @@ http.createServer(async (req, res) => {
     res.writeHead(500);
     res.end(String(error));
   }
-}).listen(5000, () => {
-  debug('Server initialized and listening on port 5000.');
+}).listen(PORT, () => {
+  debug(`Server initialized and listening on port ${PORT}.`);
 });

@@ -1,18 +1,25 @@
 ---
 version: '2'
 services:
-  web:
-    build: ./src/webapp
+  webapp:
+    build: .
     ports:
       - "5000:5000"
-    env_file: .env
+    environment:
+      - PORT=5000
+      - DEBUG=*
+      - NODE_ENV=development
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=development_password
+      - POSTGRES_DB=ccpa
     depends_on:
       - db
-    volumes:
-      - ./src/webapp:/opt/webapp
   db:
     # 12 is the latest version offered by Heroku
     image: postgres:12
     ports:
       - "5432:5432"
-    env_file: .env
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=development_password
+      - POSTGRES_DB=ccpa
