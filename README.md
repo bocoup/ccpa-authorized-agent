@@ -22,6 +22,12 @@ to be set:
   to the documentation for [the open source Node module
   `debug`](https://www.npmjs.com/package/debug) for details on the semantics of
   this value
+- `HTTP_SESSION_KEY` - the encryption key to use for session information stored
+  in HTTP cookies (The application uses HTTP cookies to persist information
+  between requests. This includes a flag describing whether the user has
+  previously been authenticated as an administrator.)
+- `ADMIN_PASSWORD` - the password that users must enter to authenticate as
+  administrators and access the Member table
 - `NODE_ENV` - controls the use of various runtime optimizations such as HTML
   template caching; set to `development` to disable all optimization; set to
   `production` to enable all optimizations.
@@ -40,6 +46,8 @@ Dependencies:
     $ heroku login
     $ heroku apps:create ccpa-authorized-agent
     $ heroku config:set --app ccpa-authorized-agent NODE_ENV=production
+    $ heroku config:set --app ccpa-authorized-agent HTTP_SESSION_KEY=some_hard_to_guess_value_f@ds9
+    $ heroku config:set --app ccpa-authorized-agent ADMIN_PASSWORD=open_sesame
     $ heroku addons:create heroku-postgresql:hobby-dev
 
 2. Deploy the application code

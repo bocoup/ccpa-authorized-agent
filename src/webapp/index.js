@@ -3,10 +3,12 @@ const http = require('http');
 const debug = require('debug')('index');
 const {member: Member} = require('./models/');
 // PAAS_COUPLING: Heroku provides the `PORT` environment variable.
-const {PORT} = process.env;
+const {PORT, HTTP_SESSION_KEY} = process.env;
 const express = require('express');
 const mustacheExpress = require('mustache-express');
 const helmet = require('helmet');
+const handleAsync = require('./handle-async');
+const admin = require('./admin');
 
 const app = express();
 
@@ -21,20 +23,11 @@ app.use(helmet({
 }));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
-
-function handleAsync(handler) {
-  return (req, res, next) => {
-    handler(req, res, next).catch(next);
-  };
-}
+app.use('/admin', admin);
 
 app.get('/', (req, res) => {
   res.render('index');
 });
-
-app.get('/admin', handleAsync(async (req, res) => {
-  res.render('admin', {members: await Member.findAll()});
-}));
 
 app.post('/sign-up', handleAsync(async (req, res) => {
   await Member.create({

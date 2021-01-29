@@ -11,6 +11,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "cookie-session": "^1.4.0",
     "debug": "^4.3.1",
     "express": "^4.17.1",
     "helmet": "^4.4.1",

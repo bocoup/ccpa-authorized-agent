@@ -54,7 +54,7 @@ h2 {
 	position: relative;
 }
 
-.sign-up input {
+.sign-up input, .sign-in input {
 	border: solid 2px #aaa;
 	border-radius: 0.2em;
 }
@@ -64,13 +64,15 @@ h2 {
 	width: 100%;
 	margin-top: 0.5em;
 }
-.contact label {
+.contact label,
+.sign-in label {
 	color: #777;
 	margin-bottom: 0.2em;
 	display: block;
 	font-size: 0.9em;
 }
-.contact input {
+.contact input,
+.sign-in input {
 	padding: 1em;
 	width: 100%;
 }
@@ -106,6 +108,10 @@ h2 {
 
 .controls {
 	text-align: right;
+}
+
+.sign-in .controls {
+	margin-top: 1em;
 }
 
 .controls input[type="submit"] {
