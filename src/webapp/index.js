@@ -1,9 +1,8 @@
 'use strict';
-const http = require('http');
 const debug = require('debug')('index');
 const {member: Member} = require('./models/');
 // PAAS_COUPLING: Heroku provides the `PORT` environment variable.
-const {PORT, HTTP_SESSION_KEY} = process.env;
+const {PORT} = process.env;
 const express = require('express');
 const mustacheExpress = require('mustache-express');
 const helmet = require('helmet');
