@@ -1,0 +1,28 @@
+{{>common-top}}
+
+<h1>CCPA Onboarding Dashboad</h1>
+
+<p>The onboarding steps for a member are: fill out form > confirm email > confirm sms > sign document</p>
+
+<p>The following table consists of three columns: CR ID, Personal Info, and Current Stage. CR ID is the id in the Consumer Reports database for this member. Personal Info contains name, email, and phone number. Current Stage contains what steps have or have not been completed. Current Stage is not yet implemented. The table is sorted chronologically.</p>
+
+<table class="members">
+	<thead>
+		<tr>
+			<th class="cr-id">CR ID</th>
+			<th>Personal Info</th>
+			<th>Current Stage (not implemented)</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#members}}
+		<tr>
+			<td>{{id}}</td>
+			<td>{{firstName}} {{lastName}}, {{email}} {{phone}}</td>
+			<td></td>
+		</tr>
+		{{/members}}
+	</tbody>
+</table>
+
+{{>common-bottom}}

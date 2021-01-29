@@ -11,10 +11,27 @@ html, body {
 	padding: 0;
 }
 
+header {
+	position: relative;
+
+	border-bottom: solid 1px #333;
+	margin-bottom: 3em;
+	padding: 0.4em 1em;
+}
+header img {
+	width: 155px;
+}
+header .admin {
+	color: #ccc;
+	float: right;
+	font-size: 0.8em;
+}
+
 main {
 	max-width: 1024px;
 	width: 100%;
 	margin: 0 auto;
+	padding: 0 1em;
 }
 
 h1 {
@@ -28,7 +45,9 @@ h2 {
 .column {
 	width: 50%;
 	float: left;
-	padding: 1em;
+}
+.column:nth-child(2n+1) {
+	padding-right: 1em;
 }
 
 .sign-up {
@@ -99,6 +118,38 @@ h2 {
 	font-weight: bold;
 }
 
+.members {
+	width: 100%;
+
+	border-collapse: collapse;
+}
+
+.members th, .members td {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+
+	border-color: #cacaca;
+	border-style: solid;
+}
+
+.members th {
+	border-width: 1px 1px 2px 1px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+
+	background-color: #eee;
+	font-weight: normal;
+	text-align: left;
+}
+
+.members td {
+	border-width: 1px;
+}
+
+.members .cr-id {
+	width: 4em;
+}
+
 @media screen and (max-width: 800px) {
 	.column {
 		width: 100%;
@@ -106,5 +157,18 @@ h2 {
 
 	.contact.contact {
 		width: 100%;
+	}
+
+	.members {
+		table-layout: fixed;
+	}
+
+	.members td {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.members td:active {
+		overflow: visible;
 	}
 }
