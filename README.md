@@ -13,6 +13,21 @@ Run the following command:
 This will create a web server listening on port 5000. You may access it by
 visiting http://localhost:5000 in a web browser.
 
+## Environment variables
+
+The application requires the following operating system environment variables
+to be set:
+
+- `DEBUG` - controls the verbosity of the application's logging output; refer
+  to the documentation for [the open source Node module
+  `debug`](https://www.npmjs.com/package/debug) for details on the semantics of
+  this value
+- `NODE_ENV` - controls the use of various runtime optimizations such as HTML
+  template caching; set to `development` to disable all optimization; set to
+  `production` to enable all optimizations.
+- `PORT` - specifies the TCP port on which the application's HTTP server will
+  listen for incoming requests
+
 ## Deployment workflow
 
 Dependencies:
