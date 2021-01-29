@@ -35,17 +35,17 @@ Dependencies:
 
 1. Create a Heroku app and database
 
-    $ heroku login
-    $ heroku apps:create ccpa-authorized-agent
-    $ heroku config:set --app ccpa-authorized-agent NODE_ENV=production
-    $ heroku config:set --app ccpa-authorized-agent HTTP_SESSION_KEY=some_hard_to_guess_value_f@ds9
-    $ heroku config:set --app ccpa-authorized-agent ADMIN_PASSWORD=open_sesame
-    $ heroku addons:create heroku-postgresql:hobby-dev
+       $ heroku login
+       $ heroku apps:create ccpa-authorized-agent
+       $ heroku config:set --app ccpa-authorized-agent NODE_ENV=production
+       $ heroku config:set --app ccpa-authorized-agent HTTP_SESSION_KEY=some_hard_to_guess_value_f@ds9
+       $ heroku config:set --app ccpa-authorized-agent ADMIN_PASSWORD=open_sesame
+       $ heroku addons:create heroku-postgresql:hobby-dev
 
 2. Deploy the application code
 
-    $ heroku container:push web --app ccpa-authorized-agent
-    $ heroku container:release web --app ccpa-authorized-agent
+       $ heroku container:push web --app ccpa-authorized-agent
+       $ heroku container:release web --app ccpa-authorized-agent
 
 ## Code of Conduct
 
