@@ -21,7 +21,7 @@ app.use(helmet({
   // HTTPS.
   hsts: false,
 }));
-app.use(express.static('public'));
+app.use('/static', express.static('static'));
 app.use(express.urlencoded({ extended: true }));
 app.use('/admin', admin);
 
