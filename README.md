@@ -18,21 +18,13 @@ visiting http://localhost:5000 in a web browser.
 The application requires the following operating system environment variables
 to be set:
 
-- `DEBUG` - controls the verbosity of the application's logging output; refer
-  to the documentation for [the open source Node module
-  `debug`](https://www.npmjs.com/package/debug) for details on the semantics of
-  this value
-- `HTTP_SESSION_KEY` - the encryption key to use for session information stored
-  in HTTP cookies (The application uses HTTP cookies to persist information
-  between requests. This includes a flag describing whether the user has
-  previously been authenticated as an administrator.)
-- `ADMIN_PASSWORD` - the password that users must enter to authenticate as
-  administrators and access the Member table
-- `NODE_ENV` - controls the use of various runtime optimizations such as HTML
-  template caching; set to `development` to disable all optimization; set to
-  `production` to enable all optimizations.
-- `PORT` - specifies the TCP port on which the application's HTTP server will
-  listen for incoming requests
+Name               | Purpose
+-------------------|--------
+`DEBUG`            | controls the verbosity of the application's logging output; refer to the documentation for [the open source Node module `debug`](https://www.npmjs.com/package/debug) for details on the semantics of this value
+`HTTP_SESSION_KEY` | the encryption key to use for session information stored in HTTP cookies (The application uses HTTP cookies to persist information between requests. This includes a flag describing whether the user has previously been authenticated as an administrator.)
+`ADMIN_PASSWORD`   | the password that users must enter to authenticate as administrators and access the Member table
+`NODE_ENV`         | controls the use of various runtime optimizations such as HTML template caching; set to `development` to disable all optimization; set to `production` to enable all optimizations.
+`PORT`             | specifies the TCP port on which the application's HTTP server will listen for incoming requests
 
 ## Deployment workflow
 
