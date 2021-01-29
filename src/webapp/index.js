@@ -6,6 +6,7 @@ const {member: Member} = require('./models/');
 const {PORT} = process.env;
 const express = require('express');
 const mustacheExpress = require('mustache-express');
+const helmet = require('helmet');
 
 const app = express();
 
@@ -13,6 +14,11 @@ app.set('views', './views');
 app.set('view engine', 'mustache');
 app.engine('mustache', mustacheExpress());
 
+app.use(helmet({
+  // HSTS must be disabled until the production environment is served over
+  // HTTPS.
+  hsts: false,
+}));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
