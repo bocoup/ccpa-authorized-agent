@@ -2,10 +2,5 @@
 const path = require('path');
 
 module.exports = {
-  // This project exposes database configuration via environment variables. By
-  // default, the Sequelize module loads database configuration from a
-  // declarative JSON file. Override this behavior to instead load from an
-  // executable file so that the relevant information can be dynamically
-  // sourced from the environment.
-  config: path.resolve('sequelize-config.js'),
+  config: path.resolve('sequelize-config.json'),
 };

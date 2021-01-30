@@ -25,6 +25,7 @@ Name               | Purpose
 `ADMIN_PASSWORD`   | the password that users must enter to authenticate as administrators and access the Member table
 `NODE_ENV`         | controls the use of various runtime optimizations such as HTML template caching; set to `development` to disable all optimization; set to `production` to enable all optimizations.
 `PORT`             | specifies the TCP port on which the application's HTTP server will listen for incoming requests
+`DATABASE_URL`     | the location of the PostgreSQL database; takes the form `postgres://username:password@host:port/database`
 
 ## Deployment workflow
 
