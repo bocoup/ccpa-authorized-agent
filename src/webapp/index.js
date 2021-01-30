@@ -1,13 +1,13 @@
 'use strict';
 const debug = require('debug')('index');
-const {member: Member} = require('./models/');
-// PAAS_COUPLING: Heroku provides the `PORT` environment variable.
-const {PORT} = process.env;
 const express = require('express');
 const mustacheExpress = require('mustache-express');
 const helmet = require('helmet');
-const handleAsync = require('./handle-async');
+
+// PAAS_COUPLING: Heroku provides the `PORT` environment variable.
+const {PORT} = process.env;
 const admin = require('./admin');
+const member = require('./member');
 
 const app = express();
 
@@ -23,23 +23,13 @@ app.use(helmet({
 app.use('/static', express.static('static'));
 app.use(express.urlencoded({ extended: true }));
 app.use('/admin', admin);
+app.use('/member', member);
 
 app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.post('/sign-up', handleAsync(async (req, res) => {
-  await Member.create({
-    firstName: req.body['first-name'],
-    lastName: req.body['last-name'],
-    streetAddress: req.body['address-street'],
-    city: req.body['address-city'],
-    zipcode: req.body['address-zipcode'],
-    email: req.body.email,
-    phone: req.body.phone,
+  res.render('index', {
+    success: !!req.query.success
   });
-  res.redirect('/');
-}));
+});
 
 app.listen(PORT, () => {
   debug(`Server initialized and listening on port ${PORT}.`);

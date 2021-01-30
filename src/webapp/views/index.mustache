@@ -19,9 +19,15 @@
 </div>
 
 <div class="column">
+	{{#success}}
+	<h2>Success!</h2>
+
+	<p>We've received your request, and you can expect to hear from us shortly.</p>
+	{{/success}}
+	{{^success}}
 	<h2>Sign up to Volunteer</h2>
 
-	<form class="sign-up" method="POST" action="/sign-up">
+	<form class="sign-up" method="POST" action="/member/sign-up">
 		<div class="contact first-name">
 			<label for="first-name">First Name</label>
 			<input id="first-name" type="text" name="first-name" placeholder="First Name">
@@ -83,6 +89,7 @@
 			<input type="submit" value="Volunteer">
 		</div>
 	</form>
+	{{/success}}
 </div>
 
 {{>common-bottom}}

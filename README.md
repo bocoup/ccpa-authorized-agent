@@ -26,6 +26,10 @@ Name               | Purpose
 `NODE_ENV`         | controls the use of various runtime optimizations such as HTML template caching; set to `development` to disable all optimization; set to `production` to enable all optimizations.
 `PORT`             | specifies the TCP port on which the application's HTTP server will listen for incoming requests
 `DATABASE_URL`     | the location of the PostgreSQL database; takes the form `postgres://username:password@host:port/database`
+`PUBLIC_ADDRESS`   | the URL where the application is publicly-accessible; used to generate links for responses to identity challenges
+`MAILGUN_API_KEY`  | access credential provided by [the Mailgun service](https://www.mailgun.com/); used to verify new members' e-mail addresses
+`MAILGUN_DOMAIN`   | access credential provided by [the Mailgun service](https://www.mailgun.com/); used to verufy new members' e-mail addressed
+`MAILGUN_SENDER`   | address from which e-mail messages should be sent to members
 
 ## Deployment workflow
 
@@ -41,6 +45,10 @@ Dependencies:
        $ heroku config:set --app ccpa-authorized-agent NODE_ENV=production
        $ heroku config:set --app ccpa-authorized-agent HTTP_SESSION_KEY=some_hard_to_guess_value_f@ds9
        $ heroku config:set --app ccpa-authorized-agent ADMIN_PASSWORD=open_sesame
+       $ heroku config:set --app ccpa-authorized-agent PUBLIC_ADDDRESS=https://ccpa-authorized-agent.herokuapp.com/
+       $ heroku config:set --app ccpa-authorized-agent MAILGUN_API_KEY=xxx_key_xxx
+       $ heroku config:set --app ccpa-authorized-agent MAILGUN_DOMAIN=xxx_domain_xxx
+       $ heroku config:set --app ccpa-authorized-agent MAILGUN_SENDER=robot@example.com
 
        # Heroku-provided PostgreSQL database requires SSL
        $ heroku config:set --app ccpa-authorized-agent PGSSLMODE=require
