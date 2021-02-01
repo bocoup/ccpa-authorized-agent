@@ -41,10 +41,17 @@ Dependencies:
        $ heroku config:set --app ccpa-authorized-agent NODE_ENV=production
        $ heroku config:set --app ccpa-authorized-agent HTTP_SESSION_KEY=some_hard_to_guess_value_f@ds9
        $ heroku config:set --app ccpa-authorized-agent ADMIN_PASSWORD=open_sesame
-       $ heroku addons:create heroku-postgresql:hobby-dev
+
+       # Heroku-provided PostgreSQL database requires SSL
+       $ heroku config:set --app ccpa-authorized-agent PGSSLMODE=require
+       # Heroku-provided PostgreSQL uses self-signed certificate
+       $ heroku config:set --app ccpa-authorized-agent NODE_TLS_REJECT_UNAUTHORIZED=0
+
+       $ heroku addons:create --app ccpa-authorized-agent heroku-postgresql:hobby-dev
 
 2. Deploy the application code
 
+       $ heroku container:login
        $ heroku container:push web --app ccpa-authorized-agent
        $ heroku container:release web --app ccpa-authorized-agent
 
