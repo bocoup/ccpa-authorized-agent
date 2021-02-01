@@ -5,7 +5,7 @@ const {URL} = require('url');
 const {Router} = require('express');
 
 const {PUBLIC_ADDRESS} = process.env;
-const challengeEmail = require('./challenges/email');
+const schemes = require('./verification-schemes/');
 const {member: Member} = require('./models/');
 const handleAsync = require('./handle-async');
 
@@ -24,34 +24,34 @@ router.post('/sign-up', handleAsync(async (req, res) => {
   const publicUrl = new URL(PUBLIC_ADDRESS);
   publicUrl.pathname = path.join(publicUrl.pathname, 'member/verify');
 
-  await challengeEmail(publicUrl.href, member);
+  for (const scheme of schemes) {
+    await scheme.challenge(publicUrl.href, member);
+  }
 
   res.redirect('/?success=1');
 }));
 
 router.get('/verify', handleAsync(async (req, res) => {
-  const member = await Member.findOne({
-    where: {
-      emailChallenge: req.query.value
-    }
-  });
+  const scheme = schemes.find(({name}) => name === req.query.name);
 
-  if (!member) {
-    throw new Error('Unrecognized verification code.');
+  if (!scheme) {
+    throw new Error(`Unrecognized verification scheme: ${req.query.name}`);
   }
 
-  member.emailVerified = true;
-  await member.save();
+  if (!await scheme.verify(req.query.value)) {
+    throw new Error('Verification failed.');
+  }
+
   res.redirect('./status?verified=email');
 }));
 
 router.get('/status', handleAsync(async (req, res) => {
-  const verified = req.query.verified.split(',').reduce((memo, next) => {
-    memo[next] = true;
-    return memo;
-  }, {});
+  const verified = req.query.verified.split(',');
+  const statuses = schemes.map(({name}) => {
+    return {name, isVerified: verified.indexOf(name) > -1};
+  });
 
-  res.render('member/status', {verified});
+  res.render('member/status', {statuses});
 }));
 
 module.exports = router;

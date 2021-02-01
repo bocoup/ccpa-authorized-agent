@@ -4,7 +4,9 @@
 	<h1>Member status</h1>
 
 	<ul>
-		<li>E-mail: {{#verified.email}}Verified{{/verified.email}}{{^verified.email}}Unverified{{/verified.email}}</li>
+		{{#statuses}}
+		<li>{{name}}: {{#isVerified}}Verified{{/isVerified}}{{^isVerified}}Unverified{{/isVerified}}</li>
+		{{/statuses}}
 	</ul>
 </div>
 
