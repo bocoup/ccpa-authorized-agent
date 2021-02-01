@@ -31,6 +31,21 @@ app.get('/', (req, res) => {
   });
 });
 
+app.use((err, req, res, next) => {
+  console.log('res.headersSent:', res.headersSent);
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  debug(err.stack);
+
+  res.status(500);
+  res.render('error', {
+    message: err.message,
+    stack: process.env.NODE_ENV === 'development' ? err.stack : null
+  });
+});
+
 app.listen(PORT, () => {
   debug(`Server initialized and listening on port ${PORT}.`);
 });
