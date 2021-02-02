@@ -25,12 +25,12 @@ code of conduct and cooperate with the Consumer Reports staff who enforce it.
 ### Expected Behavior
 
 Individuals are expected to behave appropriately and professionally during
-their participation in all projects, collaborations or events. In particular,
-all individuals should actively avoid intentionally or unintentionally
-participating in the harassment of individuals. Harassment includes offensive
-comments related to gender, sexual orientation, disability, mental health,
-neurotype, age, physical appearance, body, race, ethnicity, nationality or
-religion; deliberate or repeated misgendering; sexual images in public spaces;
+their participation in this project. In particular, all individuals 
+should actively avoid intentionally or unintentionally participating in the 
+harassment of individuals. Harassment includes offensive comments related to 
+gender, sexual orientation, disability, mental health, neurotype, age, 
+physical appearance, body, race, ethnicity, nationality or religion; 
+deliberate or repeated misgendering; sexual images in public spaces;
 intimidation; stalking; following; harassing photography or recording;
 sustained disruption in meetings, lectures or other spaces; physical contact
 and simulated physical contact (e.g. emoji or textual descriptions) without
