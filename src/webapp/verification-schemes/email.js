@@ -2,8 +2,9 @@
 const fs = require('fs');
 const {URL} = require('url');
 
+const formData = require('form-data');
 const {DateTime} = require('luxon');
-const mailgun = require('mailgun-js');
+const Mailgun = require('mailgun.js');
 const mustache = require('mustache');
 const {Op} = require('sequelize');
 
@@ -21,22 +22,16 @@ const EMAIL_CHALLENGE_QUIT_DELAY = 72;
 
 const {member: Member} = require('../models/');
 const {MAILGUN_API_KEY, MAILGUN_DOMAIN, MAILGUN_SENDER} = process.env;
-const mg = mailgun({apiKey: MAILGUN_API_KEY, domain: MAILGUN_DOMAIN});
+const mg = (new Mailgun(formData)).client({
+  username: 'api',
+  key: MAILGUN_API_KEY,
+});
 const messageTemplate = fs.readFileSync(
   __dirname + '/../views/member/verify-email.mustache', 'utf-8'
 );
 
 const send = (data) => {
-  return new Promise((resolve, reject) => {
-    mg.messages().send(data, (error, body) => {
-      if (error) {
-        reject(error);
-        return;
-      }
-
-      resolve(body);
-    });
-  });
+  return mg.messages.create(MAILGUN_DOMAIN, data);
 };
 
 exports.name = NAME;
