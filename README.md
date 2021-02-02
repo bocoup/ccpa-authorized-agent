@@ -58,7 +58,7 @@ Dependencies:
        $ heroku config:set --app ccpa-authorized-agent NODE_ENV=production
        $ heroku config:set --app ccpa-authorized-agent HTTP_SESSION_KEY=some_hard_to_guess_value_f@ds9
        $ heroku config:set --app ccpa-authorized-agent ADMIN_PASSWORD=open_sesame
-       $ heroku config:set --app ccpa-authorized-agent PUBLIC_ADDDRESS=https://ccpa-authorized-agent.herokuapp.com/
+       $ heroku config:set --app ccpa-authorized-agent PUBLIC_ADDRESS=https://ccpa-authorized-agent.herokuapp.com/
        $ heroku config:set --app ccpa-authorized-agent MAILGUN_API_KEY=xxx_key_xxx
        $ heroku config:set --app ccpa-authorized-agent MAILGUN_MESSAGING_DOMAIN=xxx_domain_xxx
        $ heroku config:set --app ccpa-authorized-agent MAILGUN_SENDER=robot@example.com
