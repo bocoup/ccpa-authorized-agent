@@ -1,14 +1,29 @@
 'use strict';
+const path = require('path');
+
 const debug = require('debug')('index');
 const express = require('express');
 const mustacheExpress = require('mustache-express');
 const helmet = require('helmet');
 
 // PAAS_COUPLING: Heroku provides the `PORT` environment variable.
-const {PORT} = process.env;
+const {PORT, PUBLIC_ADDRESS} = process.env;
 const admin = require('./admin');
 const member = require('./member');
+const {remindUnverified} = require('./verification-schemes/');
+const memberMountPoint = '/member';
 
+const challengeResponseUrl = (() => {
+  const url = new URL(PUBLIC_ADDRESS);
+  url.pathname = path.join(url.pathname, memberMountPoint, 'verify');
+  return url.href;
+})();
+/**
+ * Number of milliseconds to wait between attempts to send pending verification
+ * reminders. This is distinct from the period at which any given verification
+ * reminder will be issued.
+ */
+const VERIFICATION_REMINDER_CHECK_PERIOD = 1000 * 60 * 10; // ten minutes
 const app = express();
 
 app.set('views', './views');
@@ -23,7 +38,7 @@ app.use(helmet({
 app.use('/static', express.static('static'));
 app.use(express.urlencoded({ extended: true }));
 app.use('/admin', admin);
-app.use('/member', member);
+app.use(memberMountPoint, member);
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -49,3 +64,15 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   debug(`Server initialized and listening on port ${PORT}.`);
 });
+
+(async function remind() {
+  const results = await remindUnverified(challengeResponseUrl);
+
+  for (const result of results) {
+    if (result.status === 'rejected') {
+      debug(result.reason);
+    }
+  }
+
+  setTimeout(remind, VERIFICATION_REMINDER_CHECK_PERIOD);
+}());

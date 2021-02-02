@@ -22,7 +22,7 @@ router.post('/sign-up', handleAsync(async (req, res) => {
     phone: req.body.phone,
   });
   const publicUrl = new URL(PUBLIC_ADDRESS);
-  publicUrl.pathname = path.join(publicUrl.pathname, 'member/verify');
+  publicUrl.pathname = path.join(publicUrl.pathname, req.baseUrl, 'verify');
 
   for (const scheme of schemes) {
     await scheme.challenge(publicUrl.href, member);

@@ -73,10 +73,10 @@ exports.challenge = async (responseUrl, member) => {
  */
 exports.findUnverified = async () => {
   const now = DateTime.local();
-  const previousChallengeTime = now.sub(
+  const previousChallengeTime = now.minus(
     {hours: EMAIL_CHALLENGE_RETRY_PERIOD}
   ).toISO();
-  const challengeQuit = now.sub({hours: EMAIL_CHALLENGE_QUIT_DELAY});
+  const challengeQuit = now.minus({hours: EMAIL_CHALLENGE_QUIT_DELAY});
 
   return Member.findAll({
     where: {
