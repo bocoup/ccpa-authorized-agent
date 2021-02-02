@@ -1,0 +1,16 @@
+{
+  "name": "fake-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --ui tdd"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^8.2.1",
+    "selenium-webdriver": "^4.0.0-alpha.8"
+  }
+}

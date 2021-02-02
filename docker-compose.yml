@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.3'
 services:
   webapp:
     build: .
@@ -23,13 +23,22 @@ services:
     depends_on:
       - db
   fake-api:
-    build: src/fake-api
+    build:
+      context: src/fake-api
+      # The following setting is a workaround recommended by the Selenium
+      # maintainers
+      # https://github.com/SeleniumHQ/docker-selenium/tree/b0dadfe7f37b944889f638ffe97a5341fb1a9669
+      shm_size: 2g
     ports:
       - "3111:3111"
-    volumes:
-      - ./src/fake-api:/opt/fake-api
     environment:
       - PORT=3111
+      - WEBDRIVER_DOMAIN=firefox:4444
+      - APP_DOMAIN=webapp:5000
+  firefox:
+    image: selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210201
+    ports:
+      - "4444:4444"
   db:
     # 12 is the latest version offered by Heroku
     image: postgres:12

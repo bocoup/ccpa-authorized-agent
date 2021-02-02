@@ -18,6 +18,13 @@ development. Developers who wish to interact with one or more authentic
 third-party service may do so by modifying the environment variables documented
 below.
 
+## Automated functional tests
+
+To execute the automated functional tests, initialize a development
+environment, and run the following command:
+
+    $ docker exec -it ccpaauthorizedagent_fake-api_1 npm test
+
 ## Environment variables
 
 The application requires the following operating system environment variables

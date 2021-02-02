@@ -1,0 +1,11 @@
+{
+  "extends": "../../.eslintrc",
+  "globals": {
+    "setup": "readonly",
+    "suite": "readonly",
+    "suiteSetup": "readonly",
+    "suiteTeardown": "readonly",
+    "teardown": "readonly",
+    "test": "readonly"
+  }
+}
