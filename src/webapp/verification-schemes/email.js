@@ -21,17 +21,20 @@ const EMAIL_CHALLENGE_RETRY_PERIOD = 24;
 const EMAIL_CHALLENGE_QUIT_DELAY = 72;
 
 const {member: Member} = require('../models/');
-const {MAILGUN_API_KEY, MAILGUN_DOMAIN, MAILGUN_SENDER} = process.env;
+const {
+  MAILGUN_API_KEY, MAILGUN_MESSAGING_DOMAIN, MAILGUN_SENDER, MAILGUN_SERVICE_DOMAIN
+} = process.env;
 const mg = (new Mailgun(formData)).client({
   username: 'api',
   key: MAILGUN_API_KEY,
+  url: MAILGUN_SERVICE_DOMAIN,
 });
 const messageTemplate = fs.readFileSync(
   __dirname + '/../views/member/verify-email.mustache', 'utf-8'
 );
 
 const send = (data) => {
-  return mg.messages.create(MAILGUN_DOMAIN, data);
+  return mg.messages.create(MAILGUN_MESSAGING_DOMAIN, data);
 };
 
 exports.name = NAME;

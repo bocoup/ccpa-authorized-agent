@@ -13,11 +13,23 @@ services:
       - ADMIN_PASSWORD=development_admin_password
       - DATABASE_URL=postgres://postgres:development_postgres_password@db:5432/ccpa
       - PUBLIC_ADDRESS=http://localhost:5000
-      - MAILGUN_DOMAIN=
-      - MAILGUN_API_KEY=
+
+      # Configure integration with the Mailgun service to instead reference the
+      # local test server designed to approximate the expected functionality.
+      - MAILGUN_MESSAGING_DOMAIN=development_mailgun_messaging_domain
+      - MAILGUN_API_KEY=development_mailgun_api_key
       - MAILGUN_SENDER=Excited User <me@samples.mailgun.org>
+      - MAILGUN_SERVICE_DOMAIN=http://fake-api:3111
     depends_on:
       - db
+  fake-api:
+    build: src/fake-api
+    ports:
+      - "3111:3111"
+    volumes:
+      - ./src/fake-api:/opt/fake-api
+    environment:
+      - PORT=3111
   db:
     # 12 is the latest version offered by Heroku
     image: postgres:12
