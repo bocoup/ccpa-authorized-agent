@@ -41,8 +41,27 @@ app.use('/admin', admin);
 app.use(memberMountPoint, member);
 
 app.get('/', (req, res) => {
+  let currentStep
+  // TODO: add cookie or similar and load member
+  if (!member) {
+    currentStep = 'signUp'
+  } else if (!member.verifiedPhone) {
+    currentStep = 'verifyPhone'
+  } else if (!member.verifiedEmail) {
+    currentStep = 'verifyEmail'
+  } else if (!member.generatedForm) {
+    currentStep = 'generateForm'
+  } else {
+    currentStep = 'success'
+  }
+
+  // TODO: add DocuSign here
+
   res.render('index', {
-    success: !!req.query.success
+    signUp: currentStep === 'signUp',
+    verifyPhone: currentStep === 'verifyPhone',
+    verifyEmail: currentStep === 'verifyEmail',
+    success: currentStep === 'success'
   });
 });
 

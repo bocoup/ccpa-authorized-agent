@@ -110,7 +110,7 @@ h2 {
 	text-align: right;
 }
 
-.sign-in .controls {
+.sign-in .controls, .verify .controls {
 	margin-top: 1em;
 }
 
