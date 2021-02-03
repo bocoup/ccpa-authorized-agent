@@ -3,9 +3,10 @@ const path = require('path');
 const {URL} = require('url');
 
 const {Router} = require('express');
+const phone = require('phone');
 
 const {PUBLIC_ADDRESS} = process.env;
-const schemes = require('./verification-schemes/');
+const {emailVerification, phoneVerification} = require('./verification-schemes/');
 const {member: Member} = require('./models/');
 const handleAsync = require('./handle-async');
 
@@ -19,39 +20,44 @@ router.post('/sign-up', handleAsync(async (req, res) => {
     city: req.body['address-city'],
     zipcode: req.body['address-zipcode'],
     email: req.body.email,
-    phone: req.body.phone,
+    phone: phone(req.body.phone)[0],
   });
   const publicUrl = new URL(PUBLIC_ADDRESS);
   publicUrl.pathname = path.join(publicUrl.pathname, req.baseUrl, 'verify');
 
-  for (const scheme of schemes) {
-    await scheme.challenge(publicUrl.href, member);
-  }
+  emailVerification.challenge(publicUrl.href, member);
 
   res.redirect('/?success=1');
 }));
 
 router.get('/verify', handleAsync(async (req, res) => {
-  const scheme = schemes.find(({name}) => name === req.query.name);
+  const member = await Member.findOne({
+    where: {
+      emailChallenge: req.query.value
+    }
+  });
 
-  if (!scheme) {
-    throw new Error(`Unrecognized verification scheme: ${req.query.name}`);
-  }
-
-  if (!await scheme.verify(req.query.value)) {
+  if (!await emailVerification.verify(req.query.value)) {
     throw new Error('Verification failed.');
   }
 
-  res.redirect('./status?verified=email');
+  phoneVerification.challenge(member);
+
+  res.render('verify');
 }));
 
-router.get('/status', handleAsync(async (req, res) => {
-  const verified = req.query.verified.split(',');
-  const statuses = schemes.map(({name}) => {
-    return {name, isVerified: verified.indexOf(name) > -1};
+router.post('/verify-phone-code', handleAsync(async (req, res) => {
+  const member = await Member.findOne({
+    where: {
+      emailChallenge: req.query.emailChallenge
+    }
   });
 
-  res.render('member/status', {statuses});
+  if (!await phoneVerification.verify(member, req.query.smsCode)) {
+    throw new Error('Verification failed.');
+  }
+
+  res.json({ success: true });
 }));
 
 module.exports = router;
