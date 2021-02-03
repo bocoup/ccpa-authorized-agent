@@ -39,7 +39,7 @@ enthusiastic, informed, specific, and reversible affirmation of a request.
 
 Individuals are expected to demonstrate kindness and care when communicating
 with one another. In recognizing the importance of diverse perspectives and
-expertise, Bocoup expects individuals to listen actively, and to interact with
+expertise, Consumer Reports expects individuals to listen actively, and to interact with
 respect and humility.
 
 ### Consequences of Unacceptable Behavior
@@ -65,7 +65,8 @@ otherwise oppressive behavior.
 
 ## Thank you and Credits
 
-This code of conduct is influenced by the [Processing
+This code of conduct is based off the [Bocoup code of conduct](https://bocoup.com/code-of-conduct)
+which was heavily influenced by the [Processing
 Day](https://day.processing.org/) Code of Conduct, [JSConf Code of
 Conduct](http://jsconf.com/codeofconduct.html), Citizen Code of Conduct,
 [NodeConf Photography Policy](https://github.com/nodeconf/website/issues/7),
