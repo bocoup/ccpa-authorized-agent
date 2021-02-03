@@ -28,6 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     emailVerified: {
       defaultValue: false,
       type: DataTypes.BOOLEAN
+    },
+    phoneChallengeAt: DataTypes.DATE,
+    phoneVerified: {
+      defaultValue: false,
+      type: DataTypes.BOOLEAN
     }
   }, {
     sequelize,

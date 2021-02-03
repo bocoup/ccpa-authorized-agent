@@ -1,4 +1,6 @@
 'use strict';
+require('dotenv').config();
+
 const {Client} = require('pg');
 // PAAS_COUPLING: Heroku provides the `DATABASE_URL` environment variable.
 const {DATABASE_URL} = process.env;

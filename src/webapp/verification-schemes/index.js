@@ -1,8 +1,14 @@
 'use strict';
 
-const schemes = module.exports = [
-  require('./email'),
+const emailVerification = require('./email');
+const phoneVerification = require('./phone');
+
+const schemes = [
+  emailVerification,
+  phoneVerification,
 ];
+
+module.exports = { emailVerification, phoneVerification };
 
 module.exports.remindUnverified = async (responseUrl) => {
   const promises = [];
