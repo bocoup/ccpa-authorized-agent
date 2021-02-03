@@ -24,24 +24,7 @@
 
 	<p>We've received your request, and you can expect to hear from us shortly.</p>
 	{{/success}}
-	{{#verifyPhone}}
-	<h2>Verify Your Phone Number</h2>
-	<p>Please enter the 6-digit code we sent you.</p>
-	<form class="sign-up verify" method="POST" action="/member/verifyPhone">
-		<div class="contact code">
-			<label for="code">Code</label>
-			<input id="code" type="text" name="code" placeholder="Code">
-		</div>
-		<div class="controls">
-			<input type="submit" value="Verify Code">
-		</div>
-	</form>
-	{{/verifyPhone}}
-	{{#verifyEmail}}
-	<h2>Verify Your Email</h2>
-	<p>To continue, please click the link in the email we sent you.</p>
-	{{/verifyEmail}}
-	{{#signUp}}
+	{{^success}}
 	<h2>Sign up to Volunteer</h2>
 
 	<form class="sign-up" method="POST" action="/member/sign-up">
@@ -106,7 +89,7 @@
 			<input type="submit" value="Volunteer">
 		</div>
 	</form>
-	{{/signUp}}
+	{{/success}}
 </div>
 
 {{>common-bottom}}

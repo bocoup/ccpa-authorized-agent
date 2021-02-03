@@ -10,9 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "node-fetch": "^2.6.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^7.18.0"
   }
