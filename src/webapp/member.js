@@ -20,7 +20,7 @@ router.post('/sign-up', handleAsync(async (req, res) => {
     city: req.body['address-city'],
     zipcode: req.body['address-zipcode'],
     email: req.body.email,
-    phone: phone(req.body.phone),
+    phone: phone(req.body.phone)[0],
   });
   const publicUrl = new URL(PUBLIC_ADDRESS);
   publicUrl.pathname = path.join(publicUrl.pathname, req.baseUrl, 'verify');

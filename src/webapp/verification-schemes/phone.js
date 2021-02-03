@@ -1,7 +1,7 @@
 'use strict';
 
 const fetch = require('node-fetch');
-const base64 = require('base64');
+const base64 = require('base-64');
 const FormData = require('form-data');
 const {DateTime} = require('luxon');
 const {Op} = require('sequelize');

@@ -2,7 +2,7 @@
 
 <div class="column">
 	<h1>Verify your phone number</h1>
-	<p>Please enter the 6-digit code we sent you.</p>
+	<p>Please enter the 6-digit code we just sent you.</p>
 	<form id="phone-verification-form" class="sign-up verify">
 		<div class="contact code">
 			<label for="code">Code</label>
@@ -13,31 +13,6 @@
 		</div>
 	</form>
 </div>
-<script>
-	const form = document.querySelector('#phone-verification-form')
-	form.addEventListener('submit', event => {
-		event.preventDefault()
-
-		const emailChallenge = decodeURI(window.location.search)
-			.replace('?', '')
-			.split('&')
-			.map(param => param.split('='))[1]
-
-		const smsCode = document.querySelector('code').value
-
-		fetch(
-			`/verify-phone-code?smsCode=${smsCode}&emailChallenge=${emailChallenge}`,
-			{ method: 'POST' }
-		)
-			.then(rawResponse => {
-				return rawResponse.json()
-			})
-			.then(response => {
-				if (response && response.success === true) {
-					alert('Ready to sign form')
-				}
-			})
-	})
-</script>
+<script src="/static/phone-verification.js"></script>
 
 {{>common-bottom}}
