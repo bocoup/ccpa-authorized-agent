@@ -102,10 +102,21 @@ h2 {
 .consent {
 	display: block;
 }
-.consent-participation {
-	margin-top: 3em;
+.consent-text {
+	margin-top: 1em;
 }
-
+.consent-agent {
+	margin-top: 1em;
+}
+.consent-response {
+	margin-top: 1em;
+}
+.consent-email {
+	margin-top: 1em;
+}
+.consent-policies {
+	margin-top: 1em;
+}
 .controls {
 	text-align: right;
 }
