@@ -28,6 +28,12 @@ environment, and run the following command:
 
     $ docker exec -it ccpaauthorizedagent_fake-api_1 npm test
 
+## Third Party Services
+This application integrates with three third party services for email, SMS, and electronic signing: 
+* Email: TODO explain what service we use, how to add credentials, and how to swap for a different service.
+* SMS: TODO explain what service we use, how to add credentials, and how to swap for a different service.
+* E signing: TODO explain what service we use, how to add credentials, and how to swap for a different service.
+
 ## Environment variables
 
 The application requires the following operating system environment variables
@@ -79,6 +85,7 @@ Dependencies:
        $ heroku container:login
        $ heroku container:push web --app ccpa-authorized-agent
        $ heroku container:release web --app ccpa-authorized-agent
+
 
 ## Code of Conduct
 
