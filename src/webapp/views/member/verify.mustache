@@ -21,7 +21,7 @@
 			Thank you for verifying your contact information! Please fill out the 
 			authorization form we just emailed to you.
 		</p>
-		<a id="remove-authorization" href="#">Click here to review or remove your authorization.</a>
+		<a id="status-link" href="#">Click here to review or revoke your authorization.</a>
 	</div>
 
 	<div id="status-page" class="column" style="display: none;">
@@ -31,11 +31,11 @@
 			<li>Phone: Verified</li>
 		</ul>
 		<div class="controls">
-			<input type="submit" value="Please remove my authorization">
+			<button id="revoke-authorization" type="button">Please revoke my authorization</button>
 		</div>
 	</div>
 
-	<div id="authorization-removed-page" class="column" style="display: none;">
+	<div id="authorization-revoked-page" class="column" style="display: none;">
 		<h1>Success</h1>
 		<p>We have received your request to revoke authorization.</p>
 	</div>

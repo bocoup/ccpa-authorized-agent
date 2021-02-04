@@ -9,7 +9,7 @@ const mustache = require('mustache');
 
 const sendEmail = require('./email-service');
 
-const {PUBLIC_ADDRESS} = process.env;
+const {PUBLIC_ADDRESS, REVOKE_EMAIL_RECIPIENT} = process.env;
 const {emailVerification, phoneVerification} = require('./verification-schemes/');
 const {member: Member} = require('./models/');
 const handleAsync = require('./handle-async');
@@ -73,12 +73,28 @@ router.post('/verify-phone-code', handleAsync(async (req, res) => {
   res.json({ success: true });
 }));
 
-// router.get('/status', handleAsync(async (req, res) => {
-//   const verified = req.query.verified.split(',');
-//   const statuses = schemes.map(({name}) => {
-//     return {name, isVerified: verified.indexOf(name) > -1};
-//   });
-//   res.render('member/status', {statuses});
-// }));
+router.post('/revoke-authorization', handleAsync(async (req, res) => {
+  const member = await Member.findOne({
+    where: {
+      emailChallenge: req.query.emailChallenge
+    }
+  });
+
+  const messageTemplate = fs.readFileSync(
+    __dirname + '/views/member/revoke-email.mustache', 'utf-8'
+  );
+  const message = mustache.render(messageTemplate, {
+    firstName: member.getDataValue('firstName'),
+    lastName: member.getDataValue('lastName')
+  });
+  const firstNewline = message.indexOf('\n');
+  const subject = message.substr(0, firstNewline);
+  const html = message.substr(firstNewline);
+  await sendEmail({ to: REVOKE_EMAIL_RECIPIENT, subject, html });
+
+  await member.destroy();
+  res.json({ success: true });
+}));
+
  
 module.exports = router;

@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
           } else if (numberOfDaysAgo === 1) {
             formattedDaysAgo = '1 day ago';
           } else {
-            formattedDaysAgo = `${numberOfDaysAgo} days ago (${compared})`;
+            formattedDaysAgo = `${numberOfDaysAgo} days ago`;
           }
           return formattedDaysAgo;
         };
