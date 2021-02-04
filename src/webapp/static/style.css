@@ -120,6 +120,9 @@ h2 {
 .controls {
 	text-align: right;
 }
+.status-page .controls {
+	text-align: left;
+}
 
 .sign-in .controls, .verify .controls {
 	margin-top: 1em;

@@ -1,0 +1,47 @@
+{{>common-top}}
+
+<div id="pages">
+	<div id="part-1" class="column">
+		<h1>Verify your phone number</h1>
+		<p>Please enter the 6-digit code we just sent you.</p>
+		<form id="phone-verification-form" class="sign-up verify">
+			<div class="contact code">
+				<label for="code">Code</label>
+				<input id="code" type="text" name="code" placeholder="Code">
+			</div>
+			<div class="controls">
+				<input type="submit" value="Verify Code">
+			</div>
+		</form>
+	</div>
+
+	<div id="part-2" class="column" style="display: none;">
+		<h1>Sign the authorization form</h1>
+		<p>
+			Thank you for verifying your contact information! Please fill out the 
+			authorization form we just emailed to you.
+		</p>
+		<a href="#">Click here to review or remove your authorization.</a>
+	</div>
+
+	<div id="status-page" class="column" style="display: none;">
+		<h1>Verification Status</h1>
+		<ul>
+			<li>Email: Verified</li>
+			<li>Phone: Verified</li>
+		</ul>
+		<div class="controls">
+			<input type="submit" value="Please remove my authorization">
+		</div>
+	</div>
+
+	<div id="authorization-removed-page" class="column" style="display: none;">
+		<h1>Success</h1>
+		<p>We have received your request to revoke authorization.</p>
+	</div>
+</div>
+	
+
+<script src="/static/frontend.js"></script>
+
+{{>common-bottom}}

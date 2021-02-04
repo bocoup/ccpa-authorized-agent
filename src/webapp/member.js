@@ -1,9 +1,13 @@
 'use strict';
+const fs = require('fs');
 const path = require('path');
 const {URL} = require('url');
 
 const {Router} = require('express');
 const phone = require('phone');
+const mustache = require('mustache');
+
+const sendEmail = require('./email-service');
 
 const {PUBLIC_ADDRESS} = process.env;
 const {emailVerification, phoneVerification} = require('./verification-schemes/');
@@ -43,7 +47,7 @@ router.get('/verify', handleAsync(async (req, res) => {
 
   phoneVerification.challenge(member);
 
-  res.render('verify');
+  res.render('member/verify');
 }));
 
 router.post('/verify-phone-code', handleAsync(async (req, res) => {
@@ -57,7 +61,24 @@ router.post('/verify-phone-code', handleAsync(async (req, res) => {
     throw new Error('Verification failed.');
   }
 
+  const messageTemplate = fs.readFileSync(
+    __dirname + '/views/member/authorization-email.mustache', 'utf-8'
+  );
+  const message = mustache.render(messageTemplate);
+  const firstNewline = message.indexOf('\n');
+  const subject = message.substr(0, firstNewline);
+  const html = message.substr(firstNewline);
+  await sendEmail({ to: member.email, subject, html });
+
   res.json({ success: true });
 }));
 
+// router.get('/status', handleAsync(async (req, res) => {
+//   const verified = req.query.verified.split(',');
+//   const statuses = schemes.map(({name}) => {
+//     return {name, isVerified: verified.indexOf(name) > -1};
+//   });
+//   res.render('member/status', {statuses});
+// }));
+ 
 module.exports = router;

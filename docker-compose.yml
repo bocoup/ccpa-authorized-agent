@@ -6,8 +6,10 @@ services:
     ports:
       - "5000:5000"
     env_file:
+      # Sensitive environment variables go here
       - .env
     environment:
+      # All others go here
       - PORT=5000
       - DEBUG=*
       - NODE_ENV=development
@@ -15,17 +17,6 @@ services:
       - ADMIN_PASSWORD=development_admin_password
       - DATABASE_URL=postgres://postgres:development_postgres_password@db:5432/ccpa
       - PUBLIC_ADDRESS=http://localhost:5000
-
-      # Configure integration with the Mailgun service to instead reference the
-      # local test server designed to approximate the expected functionality.
-      # - MAILGUN_MESSAGING_DOMAIN=development_mailgun_messaging_domain
-      # - MAILGUN_API_KEY=development_mailgun_api_key
-      # - MAILGUN_SENDER=Excited User <me@samples.mailgun.org>
-      # - MAILGUN_SERVICE_DOMAIN=http://fake-api:3111
-      - MAILGUN_MESSAGING_DOMAIN
-      - MAILGUN_API_KEY
-      - MAILGUN_SENDER
-      - MAILGUN_SERVICE_DOMAIN
     depends_on:
       - db
   fake-api:
