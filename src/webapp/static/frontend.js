@@ -1,6 +1,17 @@
-/* globals document, fetch, alert, window */
+/* globals document, fetch, window */
 
 'use strict';
+
+const showPageWithId = id => {
+  const pages = document.querySelector('#pages');
+  Array.from(pages.children).forEach(page => {
+    if (page.id !== id) {
+      page.style.display = 'none';
+    } else {
+      page.style.display = 'block';
+    }
+  });
+};
 
 const form = document.querySelector('#phone-verification-form');
 form.addEventListener('submit', event => {
@@ -30,7 +41,7 @@ form.addEventListener('submit', event => {
     })
     .then(response => {
       if (response && response.success === true) {
-        alert('Ready to sign form');
+        showPageWithId('part-2');
       }
     });
 });

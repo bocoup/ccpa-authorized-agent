@@ -1,0 +1,13 @@
+{{>common-top}}
+
+<div class="column">
+	<h1>Member status</h1>
+
+	<ul>
+		{{#statuses}}
+		<li>{{name}}: {{#isVerified}}Verified{{/isVerified}}{{^isVerified}}Unverified{{/isVerified}}</li>
+		{{/statuses}}
+	</ul>
+</div>
+
+{{>common-bottom}}

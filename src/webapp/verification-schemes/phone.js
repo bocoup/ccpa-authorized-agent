@@ -8,14 +8,14 @@ const {Op} = require('sequelize');
 const {member: Member} = require('../models/');
 
 /**
- * The number of hours to wait between sending e-mail reminders to any given
+ * The number of hours to wait between sending phone reminders to any given
  * member.
  */
 const PHONE_CHALLENGE_RETRY_PERIOD = 24;
 
 /**
  * The number of hours following Member creation time to wait before ceasing to
- * send e-mail reminders to any given user.
+ * send phone reminders to any given user.
  */
 const PHONE_CHALLENGE_QUIT_DELAY = 72;
 

@@ -2,9 +2,7 @@
 const fs = require('fs');
 const {URL} = require('url');
 
-const fetch = require('node-fetch');
-const base64 = require('base-64');
-const FormData = require('form-data');
+const sendEmail = require('../email-service');
 const {DateTime} = require('luxon');
 // const Mailgun = require('mailgun.js');
 const mustache = require('mustache');
@@ -24,39 +22,9 @@ const EMAIL_CHALLENGE_QUIT_DELAY = 72;
 
 const {member: Member} = require('../models/');
 
-const {
-  MAILGUN_API_KEY, MAILGUN_MESSAGING_DOMAIN, MAILGUN_SENDER, MAILGUN_SERVICE_DOMAIN
-} = process.env;
-
-// const mg = (new Mailguxn(formData)).client({
-//   username: 'api',
-//   key: MAILGUN_API_KEY,
-//   url: MAILGUN_SERVICE_DOMAIN,
-// });
-
 const messageTemplate = fs.readFileSync(
   __dirname + '/../views/member/verify-email.mustache', 'utf-8'
 );
-
-const send = async ({ from, to, subject, text }) => {
-  console.log({ from, to, subject, text });
-  // return mg.messages.create(MAILGUN_MESSAGING_DOMAIN, data);
-  const formData = new FormData();
-  formData.append('from', from);
-  formData.append('to', to);
-  formData.append('subject', subject);
-  formData.append('text', text);
-  await fetch(
-    `${MAILGUN_SERVICE_DOMAIN}/v3/${MAILGUN_MESSAGING_DOMAIN}/messages`,
-    {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Authorization': `Basic ${base64.encode(`api:${MAILGUN_API_KEY}`)}`
-      },
-    }
-  );
-};
 
 exports.name = NAME;
 
@@ -67,14 +35,9 @@ exports.challenge = async (responseUrl, member) => {
   const message = mustache.render(messageTemplate, {url: url.href});
   const firstNewline = message.indexOf('\n');
   const subject = message.substr(0, firstNewline);
-  const text = message.substr(firstNewline);
+  const html = message.substr(firstNewline);
 
-  await send({
-    from: MAILGUN_SENDER,
-    to: member.email,
-    subject,
-    text,
-  });
+  await sendEmail({ to: member.email, subject, html });
 
   member.emailChallengeAt = DateTime.local().toISO();
   await member.save();
