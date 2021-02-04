@@ -117,18 +117,15 @@ h2 {
 .consent-policies {
 	margin-top: 1em;
 }
-.controls {
+:not(#status-page) > .controls {
 	text-align: right;
-}
-.status-page .controls {
-	text-align: left;
 }
 
 .sign-in .controls, .verify .controls {
 	margin-top: 1em;
 }
 
-.controls input[type="submit"] {
+.controls input[type="submit"], .controls button {
 	border-width: 0;
 	padding: 1em 2em;
 

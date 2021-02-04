@@ -39,6 +39,9 @@ module.exports = {
         }
       },
     );
+
+    member.phoneChallengeAt = DateTime.local().toISO();
+    await member.save();
   },
 
   verify: async (member, smsCode) => {
@@ -57,8 +60,14 @@ module.exports = {
       },
     );
     const response = await rawResponse.json();
+    if (!(response && response.status === 'approved')) {
+      return false;
+    }
 
-    return response && response.status === 'approved';
+    member.phoneVerified = true;
+    await member.save();
+
+    return true;
   },
 
   findUnverified: async () => {
