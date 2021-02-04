@@ -1,4 +1,7 @@
-# California Consumer Protection Agent
+# California Consumer Privacy Act (CCPA) Authorized Agent Onboarding Tool
+This web application automates some manual parts of onbaording a member into
+Consumer Reports' Authorized Agent program, including; collecting member
+information, confirming email and phone, and signing a Power of Attorney.
 
 ## Development workflow
 
