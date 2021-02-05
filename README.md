@@ -3,6 +3,10 @@ This web application automates some manual parts of onbaording a member into
 Consumer Reports' Authorized Agent program, including; collecting member
 information, confirming email and phone, and signing a Power of Attorney.
 
+## Application Flow Diagrams
+For a an overview of how messages flow through this application see
+[docs/application-flow.md](https://github.com/bocoup/ccpa-authorized-agent/blob/main/docs/application-flow.md).
+
 ## Development workflow
 
 Dependencies:
