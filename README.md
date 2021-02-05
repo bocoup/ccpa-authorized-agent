@@ -97,8 +97,7 @@ Dependencies:
 
 ## Code of Conduct
 
-This project is governed by [the Bocoup Code of
-Conduct](https://bocoup.com/code-of-conduct).
+This project follows the code of conduct in [CODE_OF_Conduct.md](https://github.com/bocoup/ccpa-authorized-agent/blob/main/CODE_OF_CONDUCT.md) in the in the root of this project.
 
 ## License
 
