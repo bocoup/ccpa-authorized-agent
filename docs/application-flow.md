@@ -1,6 +1,8 @@
-# Application Flow
-*Diagram conventions*
-The flow diagrams in this document describe messages that travel between the end-user, Consumer Reports, and various third-party services. The diagrams use the following conventions to describe the messages:
+# Application Flow Diagrams
+This document contains a series of flow diagrams to help you understand how messages travel between the end-user, the Authorized Agent system, and various third-party services
+
+## Diagram conventions
+The below Diagrams use the following conventions to describe the messages:
 * [GET:content] - HTTP GET request containing data: "content"
 * [RESP:content] - HTTP response containing data: "content"
 * [POST:content] - HTTP POST request containing data: "content"
