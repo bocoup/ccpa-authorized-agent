@@ -30,7 +30,7 @@ below.
 To execute the automated functional tests, initialize a development
 environment, and run the following command:
 
-    $ docker exec -it ccpaauthorizedagent_fake-api_1 npm test
+    $ docker exec -it ccpa-authorized-agent_fake-api_1 npm test
 
 ## Third Party Services
 This application integrates with three third party services for email, SMS, and electronic signing: 
