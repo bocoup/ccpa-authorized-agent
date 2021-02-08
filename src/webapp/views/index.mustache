@@ -32,78 +32,79 @@
 	{{^success}}
 	<h2>Sign up to Volunteer</h2>
 
-	<form class="sign-up" method="POST" action="/member/sign-up">
-		<div class="contact first-name">
-			<label for="first-name">First Name</label>
-			<input id="first-name" type="text" name="first-name" placeholder="First Name" required="true">
-		</div>
+	<div class="column">
+        <form class="sign-up" method="POST" action="/member/sign-up">
+            <div class="contact first-name">
+                <label for="first-name">First Name</label>
+                <input id="first-name" type="text" name="first-name" placeholder="First Name" required="true">
+            </div><!--
 
-		<div class="contact last-name">
-			<label for="last-name">Last Name</label>
-			<input id="last-name" type="text" name="last-name" placeholder="Last Name" required="true">
-		</div>
+            --><div class="contact last-name">
+                <label for="last-name">Last Name</label>
+                <input id="last-name" type="text" name="last-name" placeholder="Last Name" required="true">
+            </div><!--
 
-		<div class="contact address-street">
-			<label for="address-street">California Street Address</label>
-			<input id="address-street" type="text" name="address-street" placeholder="California Street Address" required="true">
-		</div>
+            --><div class="contact address-street">
+                <label for="address-street">California Street Address</label>
+                <input id="address-street" type="text" name="address-street" placeholder="California Street Address" required="true">
+            </div><!--
 
-		<div class="contact address-city">
-			<label for="address-city">City</label>
-			<input id="address-city" type="text" name="address-city" placeholder="City" required="true">
-		</div>
+            --><div class="contact address-city">
+                <label for="address-city">City</label>
+                <input id="address-city" type="text" name="address-city" placeholder="City" required="true">
+            </div><!--
 
-		<div class="contact address-state">
-			<label for="address-state">State</label>
-			<input id="address-state" type="text" value="CA" required="true">
-		</div>
+            --><div class="contact address-state">
+                <label for="address-state">State</label>
+                <input id="address-state" type="text" value="CA" required="true">
+            </div><!--
 
-		<div class="contact address-zipcode">
-			<label for="address-zipcode">Zip Code</label>
-			<input id="address-zipcode" type="text" name="address-zipcode" placeholder="Zip Code" required="true">
-		</div>
+            --><div class="contact address-zipcode">
+                <label for="address-zipcode">Zip Code</label>
+                <input id="address-zipcode" type="text" name="address-zipcode" placeholder="Zip Code" required="true">
+            </div><!--
 
-		<div class="contact email">
-			<label for="email">Email</label>
-			<input id="email" type="text" name="email" placeholder="Email" required="true">
-		</div>
+            --><div class="contact email">
+                <label for="email">Email</label>
+                <input id="email" type="text" name="email" placeholder="Email" required="true">
+            </div><!--
 
-		<div class="contact phone">
-			<label for="phone">Mobile Phone Number</label>
-			<input id="phone" type="text" name="phone" placeholder="Mobile Phone Number" required="true">
-		</div>
+            --><div class="contact phone">
+                <label for="phone">Mobile Phone Number</label>
+                <input id="phone" type="text" name="phone" placeholder="Mobile Phone Number" required="true">
+            </div>
 
-		<div class="consent consent-text">
-			<input type="checkbox" id="consent-text" required="true">
-			<label for="consent-text">I agree to receive text messages to my mobile device as part of this program.</label>
-		</div>
+            <div class="consent consent-text">
+                <input type="checkbox" id="consent-text" required="true">
+                <label for="consent-text">I agree to receive text messages to my mobile device as part of this program.</label>
+            </div>
 
-		<div class="consent consent-agent">
-			<input type="checkbox" id="consent-agent" required="true">
-			<label for="consent-agent">I agree to have a Consumer Reports team member act as my authorized agent, to send data access requests on my behalf, and to share what happens with my requests with their team for the purpose of consumer protection policy strategy.</label>
-		</div>
+            <div class="consent consent-agent">
+                <input type="checkbox" id="consent-agent" required="true">
+                <label for="consent-agent">I agree to have a Consumer Reports team member act as my authorized agent, to send data access requests on my behalf, and to share what happens with my requests with their team for the purpose of consumer protection policy strategy.</label>
+            </div>
 
-		<div class="consent consent-response">
-			<input type="checkbox" id="consent-response" required="true">
-			<label for="consent-response">I agree to have a Consumer Reports team member share how companies respond to my data requests, and what data formats and field types they use, with the general public.</label>
-		</div>
+            <div class="consent consent-response">
+                <input type="checkbox" id="consent-response" required="true">
+                <label for="consent-response">I agree to have a Consumer Reports team member share how companies respond to my data requests, and what data formats and field types they use, with the general public.</label>
+            </div>
 
-        <div class="consent consent-email">
-            <input type="checkbox" id="consent-email" required="true">
-            <label for="consent-email">I agree to receive regular emails checking in with me about how the program is going, and covering program updates, news, and analysis about California data privacy.</label>
-        </div>
+            <div class="consent consent-email">
+                <input type="checkbox" id="consent-email" required="true">
+                <label for="consent-email">I agree to receive regular emails checking in with me about how the program is going, and covering program updates, news, and analysis about California data privacy.</label>
+            </div>
 
-        <div class="consent consent-policies">
-            <input type="checkbox" id="consent-policies" required="true">
-            <label for="consent-policies">I agree to the terms of Consumer Reports <a href="https://www.consumerreports.org/cro/customerservice/privacy-policy/highlights/index.htm"> Privacy Policy</a>, <a href="https://www.consumerreports.org/cro/2015/01/user-agreement/index.htm">User Agreement, </a><a href="https://www.consumerreports.org/cro/sms/sms-text-notification-privacy-policy.htm">SMS/Text Notification Terms</a> and <a href="https://www.consumerreports.org/cro/sms/sms-text-notification-privacy-policy.htm">SMS/Text Privacy Policy</a> </label>
-        </div>
+            <div class="consent consent-policies">
+                <input type="checkbox" id="consent-policies" required="true">
+                <label for="consent-policies">I agree to the terms of Consumer Reports <a href="https://www.consumerreports.org/cro/customerservice/privacy-policy/highlights/index.htm"> Privacy Policy</a>, <a href="https://www.consumerreports.org/cro/2015/01/user-agreement/index.htm">User Agreement, </a><a href="https://www.consumerreports.org/cro/sms/sms-text-notification-privacy-policy.htm">SMS/Text Notification Terms</a> and <a href="https://www.consumerreports.org/cro/sms/sms-text-notification-privacy-policy.htm">SMS/Text Privacy Policy</a> </label>
+            </div>
 
-		<p>We appreciate your consent!</p>
+            <p>We appreciate your consent!</p>
 
-		<div class="controls">
-			<input type="submit" value="Volunteer">
-		</div>
-	</form>
+            <div class="controls">
+                <input type="submit" value="Volunteer">
+            </div>
+        </form>
 	{{/success}}
 </div>
 
