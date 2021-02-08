@@ -3,6 +3,10 @@ This web application automates some manual parts of onbaording a member into
 Consumer Reports' Authorized Agent program, including; collecting member
 information, confirming email and phone, and signing a Power of Attorney.
 
+## Application Flow Diagrams
+For a an overview of how messages flow through this application see
+[docs/application-flow.md](https://github.com/bocoup/ccpa-authorized-agent/blob/main/docs/application-flow.md).
+
 ## Development workflow
 
 Dependencies:
@@ -30,9 +34,17 @@ environment, and run the following command:
 
 ## Third Party Services
 This application integrates with three third party services for email, SMS, and electronic signing: 
-* Email: TODO explain what service we use, how to add credentials, and how to swap for a different service.
-* SMS: TODO explain what service we use, how to add credentials, and how to swap for a different service.
-* E signing: TODO explain what service we use, how to add credentials, and how to swap for a different service.
+
+### Email
+This app currently uses mailgun for transactional emails. In order to set up mailgun for local development, sign up for a test account, grab a set of API credentials, and add them to a .env file in the root of this directory. More instructions on that below. In production, you can use use the workflow outlined in the Deployment workflow below. TODO explain how to swap for a different service.
+
+### SMS 
+This app currently uses twillio for transactional text messages. In order to set up twillio for local development, sign up for an account and add them to the .env file in the root of this directory. More instructions on that below. In production, you can also use use the workflow outlined in the Deployment workflow below. TODO explain how to swap for a different service.
+
+### E signing
+We are currently using DocuSign's ["power form"](https://www.docusign.com/features-and-benefits/features/powerforms) feature, which let's you upload a PDF, and get a reusable link to have peoplel sign a contract with unique identities. This app currently points at a Power of Attorney (PoA) "Power Form" in which is pre-loaded into the DocuSign account of the owner of this repository. In order to change or update the PoA, log into DocuSign, create a new template in, and turn it into a powerform by clicking the "use powerform" option next to that contract. Click through and ignore the email-to-sign message, because this app doesn't use it (this app sends it's own email to start the signing process). Once the contract is a "Power Form", it will give you reusable signing URL. Take that URL and paste it into the authorization email template in this repo: [src/webapp/views/member/authorization-email.mustache](https://github.com/bocoup/ccpa-authorized-agent/blob/main/src/webapp/views/member/authorization-email.mustache).
+
+If you're looking for a starting point you can use the example PoA, which is based on Consumer Reports' authorized agent program which we are keeping a copy of in markdown in the  [src/webapp/documents/authorization.md](https://github.com/bocoup/ccpa-authorized-agent/blob/main/src/webapp/documents/authorization.md). To swap out to a different e-signing service, create a reusable form link using that different service, and replace it in the above template. In the future this project may create its own signing tool, which would replace outside signing services with a home rolled or open source e signing solution using one of [California's Acceptable Technologies](https://www.sos.ca.gov/administration/regulations/current-regulations/technology/digital-signatures).
 
 ## Environment variables
 
@@ -89,8 +101,7 @@ Dependencies:
 
 ## Code of Conduct
 
-This project is governed by [the Bocoup Code of
-Conduct](https://bocoup.com/code-of-conduct).
+This project follows the code of conduct in [CODE_OF_Conduct.md](https://github.com/bocoup/ccpa-authorized-agent/blob/main/CODE_OF_CONDUCT.md) in the in the root of this project.
 
 ## License
 

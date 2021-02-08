@@ -44,4 +44,25 @@ form.addEventListener('submit', event => {
         showPageWithId('part-2');
       }
     });
+
+  document.querySelector('#status-link').addEventListener('click', event => {
+    event.preventDefault();
+    showPageWithId('status-page');
+  });
+
+  document.querySelector('#revoke-authorization').addEventListener('click', event => {
+    event.preventDefault();
+    fetch(
+      `/member/revoke-authorization?emailChallenge=${emailChallenge}`,
+      { method: 'POST' }
+    )
+      .then(rawResponse => {
+        return rawResponse.json();
+      })
+      .then(response => {
+        if (response && response.success === true) {
+          showPageWithId('authorization-revoked-page');
+        }
+      });
+  });
 });
