@@ -19,7 +19,7 @@ const PHONE_CHALLENGE_RETRY_PERIOD = 24;
  */
 const PHONE_CHALLENGE_QUIT_DELAY = 72;
 
-const {TWILIO_SERVICE_ID, TWILIO_SID, TWILIO_AUTH_TOKEN} = process.env;
+const {TWILIO_SERVICE_DOMAIN, TWILIO_SERVICE_ID, TWILIO_SID, TWILIO_AUTH_TOKEN} = process.env;
 
 module.exports = {
   name: 'phone',
@@ -30,7 +30,7 @@ module.exports = {
     formData.append('Channel', 'sms');
 
     await fetch(
-      `https://verify.twilio.com/v2/Services/${TWILIO_SERVICE_ID}/Verifications`,
+      `${TWILIO_SERVICE_DOMAIN}/v2/Services/${TWILIO_SERVICE_ID}/Verifications`,
       { 
         method: 'POST', 
         body: formData, 
@@ -50,7 +50,7 @@ module.exports = {
     formData.append('Code', smsCode);
 
     const rawResponse = await fetch(
-      `https://verify.twilio.com/v2/Services/${TWILIO_SERVICE_ID}/VerificationCheck`,
+      `${TWILIO_SERVICE_DOMAIN}/v2/Services/${TWILIO_SERVICE_ID}/VerificationCheck`,
       { 
         method: 'POST', 
         body: formData, 

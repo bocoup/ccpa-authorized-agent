@@ -27,8 +27,7 @@ below.
 
 ## Automated functional tests
 
-To execute the automated functional tests, initialize a development
-environment, and run the following command:
+To execute the automated functional tests, switch the environmental variables as described in .env-example, initialize a development environment, and run the following command:
 
     $ docker exec -it ccpa-authorized-agent_fake-api_1 npm test
 
@@ -61,9 +60,14 @@ Name                         | Purpose
 `DATABASE_URL`               | the location of the PostgreSQL database; takes the form `postgres://username:password@host:port/database`
 `PUBLIC_ADDRESS`             | the URL where the application is publicly-accessible; used to generate links for responses to identity challenges
 `MAILGUN_API_KEY`            | access credential provided by [the Mailgun service](https://www.mailgun.com/); used to verify new members' e-mail addresses
-`MAILGUN_MESSAGING_DOMAIN`   | access credential provided by [the Mailgun service](https://www.mailgun.com/); used to verufy new members' e-mail addressed
+`MAILGUN_MESSAGING_DOMAIN`   | access credential provided by [the Mailgun service](https://www.mailgun.com/); used to verify new members' e-mail addressed
 `MAILGUN_SENDER`             | address from which e-mail messages should be sent to members
 `MAILGUN_SERVICE_DOMAIN`     | domain to use in contacting [the Mailgun service](https://www.mailgun.com/); varies by region
+`TWILIO_SERVICE_ID`            | an ID referring to a single sign up form for SMS verification
+`TWILIO_SID`   | credential required by Twilio
+`TWILIO_AUTH_TOKEN`             | credential required by Twilio
+`TWILIO_SERVICE_DOMAIN`     | the domain used for Twilio's API. Can be overridden for testing.
+`REVOKE_EMAIL_RECIPIENT`     | the email address to use when a member revokes their authorization
 
 ## Deployment workflow
 
