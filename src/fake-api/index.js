@@ -34,7 +34,7 @@ const sendEmail = async (req, res) => {
 
 http.createServer((req, res) => {
   console.log(req.method, req.url);
-  if (req.method === 'POST' && req.url === '/v3/fake.org/messages') {
+  if (req.method === 'POST' && req.url.match(/^\/v3\/.+\/messages/)) {
     return sendEmail(req, res);
   }
   if (req.method === 'POST' && req.url.includes('/Verifications')) {

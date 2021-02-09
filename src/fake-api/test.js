@@ -41,7 +41,7 @@ suite('integration', () => {
   });
 
   suiteTeardown(async () => {
-    await clearFakeApiState()
+    await clearFakeApiState();
     driver && await driver.quit();
   });
 
@@ -78,7 +78,7 @@ suite('integration', () => {
     await driver.findElement(By.css('#verify-code')).click();
     
     // // Receive link to authorization form
-    // await driver.wait(driver.findElement(By.css('#part-2 h1')).isVisible());
+    await driver.wait(driver.findElement(By.css('#part-2 h1')).isDisplayed());
     assert.strictEqual(await verificationSmsApproved(), true);
     email = await getLatestEmail();
     assert.match(email, /Thank you for enrolling in the Consumer Reports Authorized Agent study/);
