@@ -30,10 +30,19 @@ app.set('views', './views');
 app.set('view engine', 'mustache');
 app.engine('mustache', mustacheExpress());
 
+// The `upgrade-insecure-requests` directive of Content-Security-Policy must be
+// omitted until the production environment is served over HTTPS.
+const cspDirectives = Object.assign(
+  {}, helmet.contentSecurityPolicy.getDefaultDirectives()
+);
+delete cspDirectives['upgrade-insecure-requests'];
 app.use(helmet({
   // HSTS must be disabled until the production environment is served over
   // HTTPS.
   hsts: false,
+  contentSecurityPolicy: {
+    directives: cspDirectives,
+  }
 }));
 app.use('/static', express.static('static'));
 app.use(express.urlencoded({ extended: true }));
