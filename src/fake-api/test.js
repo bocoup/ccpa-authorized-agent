@@ -2,9 +2,31 @@
 
 const {Builder, By} = require('selenium-webdriver');
 const assert = require('assert');
-const { getLatestEmail, verificationSmsSent, verificationSmsApproved } = require('./index');
+const fetch = require('node-fetch');
 
-const setupTimeout = 5 * 1000;
+const clearFakeApiState = async () => {
+  await fetch(`http://localhost:${process.env.PORT}/clear-state`);
+};
+
+const getLatestEmail = async () => {
+  const rawResponse = await fetch(`http://localhost:${process.env.PORT}/get-latest-email`);
+  const text = await rawResponse.text();
+  return text.toString();
+};
+
+const verificationSmsSent = async () => {
+  const rawResponse = await fetch(`http://localhost:${process.env.PORT}/verification-sms-sent`);
+  const rawJson = await rawResponse.json();
+  return JSON.parse(rawJson);
+};
+
+const verificationSmsApproved = async () => {
+  const rawResponse = await fetch(`http://localhost:${process.env.PORT}/verification-sms-approved`);
+  const rawJson = await rawResponse.json();
+  return JSON.parse(rawJson);
+};
+
+const setupTimeout = 15 * 1000;
 
 suite('integration', () => {
   let driver;
@@ -19,6 +41,7 @@ suite('integration', () => {
   });
 
   suiteTeardown(async () => {
+    await clearFakeApiState()
     driver && await driver.quit();
   });
 
@@ -45,19 +68,19 @@ suite('integration', () => {
     assert.strictEqual(successText, 'Thanks for signing up! You have a few more steps to enroll');
     
     // Click link to verify email
-    let email = getLatestEmail();
-    const emailLink = email.match(/To confirm your email, click <a href="([^"])">/)[1];
+    let email = await getLatestEmail();
+    const emailLink = email.match(/To confirm your email, click <a href="([^"]+)">/)[1];
     
     // Enter code to verify phone
     await driver.get(emailLink);
-    assert.strictEqual(verificationSmsSent(), true);
+    assert.strictEqual(await verificationSmsSent(), true);
     await driver.findElement(By.css('#code')).sendKeys('99999');
     await driver.findElement(By.css('#verify-code')).click();
     
-    // Receive link to authorization form
-    await driver.wait(driver.findElement(By.css('#part-2 h1')).isVisible());
-    assert.strictEqual(verificationSmsApproved(), true);
-    email = getLatestEmail();
+    // // Receive link to authorization form
+    // await driver.wait(driver.findElement(By.css('#part-2 h1')).isVisible());
+    assert.strictEqual(await verificationSmsApproved(), true);
+    email = await getLatestEmail();
     assert.match(email, /Thank you for enrolling in the Consumer Reports Authorized Agent study/);
     assert.match(email, /<a href="https:\/\/na4\.docusign\.net\/Member\/PowerFormSigning\.aspx/);
   });

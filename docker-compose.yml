@@ -16,7 +16,6 @@ services:
       - HTTP_SESSION_KEY=development_session_key
       - ADMIN_PASSWORD=development_admin_password
       - DATABASE_URL=postgres://postgres:development_postgres_password@db:5432/ccpa
-      - PUBLIC_ADDRESS=http://localhost:5000
     depends_on:
       - db
   fake-api:

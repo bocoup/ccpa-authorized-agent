@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "mocha": "^8.2.1",
+    "node-fetch": "^2.6.1",
     "selenium-webdriver": "^4.0.0-alpha.8"
   }
 }
