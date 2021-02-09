@@ -39,7 +39,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/', handleAsync(async (req, res) => {
-  res.render('admin/index', {members: await Member.findAll()});
+  res.render('admin/index', {members: await Member.findAll({ order: [['createdAt', 'ASC']] })});
 }));
 
 module.exports = router;

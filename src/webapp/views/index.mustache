@@ -1,46 +1,45 @@
 {{>common-top}}
 
-<div class="column">
-	<h1>Volunteer to test the Authorized Agent feature of California's new privacy law!</h1>
-
-	<p>The California Consumer Privacy Act (CCPA) gives you, as a California consumer, the right to access the personal information companies have about you. Best of all, you don't have to go one-by-one to all of the companies that have your personal information. The CCPA lets you designate an "authorized agent" to contact companies about your data for you.</p>
-
-	<p>This Consumer Reports experiment is designed to test how we might relieve consumers of the onerous data request process by sending data requests to corporations for you. Just provide us with your contact information and give us permission. We'll do the rest.</p>
-
-	<h2>How it works</h2>
-
-	<ol>
-		<li>Sign up here with your legal name, California address, email address, and mobile phone number. Unfortunately we cannot accommodate landline phones at this time.</li>
-		<li>Sign a document giving Consumer Reports permission to act as your authorized agent.</li>
-		<li>Consumer Reports will send data requests to participating companies requesting that companies give you access to the personal information they have about you.</li>
-		<li>We'll keep you updated on our progress and what we're learning about the data economy via regular emails.</li>
-	</ol>
+{{#success}}
+<div id="success">
+    <h2>Thanks for signing up! You have a few more steps to enroll</h2>
+    <ol>
+        <li>Email: A confirmation email from us should be in your inbox. Open the email and click the confirmation link.</li>
+        <li>Mobile Phone Number: A text message with a confirmation code will be sent once you have confirmed your email address.</li>
+        <li>If you don't receive a confirmation email or text within 10 minutes, let us know at datarightsstudy@cr.org.</li>
+        <li>Check your email and use DocuSign to sign a document authorizing Consumer Reports to make data requests for you.</li>
+    </ol>
+    <p>Your onboarding is complete!</p>
 </div>
-
+{{/success}}
+{{^success}}
 <div class="column">
-	{{#success}}
-	<h2>Thanks for signing up! You have a few more steps to enroll</h2>
-	<ol>
-		<li>Email: A confirmation email from us should be in your inbox. Open the email and click the confirmation link.</li>
-		<li>Mobile Phone Number: A text message with a confirmation code will be sent once you have confirmed your email address.</li>
-		<li>If you don't receive a confirmation email or text within 10 minutes, let us know at datarights@cr.org.</li>
-		<li>Check your email and use DocuSign to sign a document authorizing Consumer Reports to make data requests for you.</li>
-	</ol>
-  
-  <p>Your onboarding is complete!</p>
+    <h1>Volunteer to test the Authorized Agent feature of California's new privacy law!</h1>
 
-	{{/success}}
-	{{^success}}
-	<h2>Sign up to Volunteer</h2>
+    <p>The California Consumer Privacy Act (CCPA) gives you, as a California consumer, the right to access the personal information companies have about you. Best of all, you don't have to go one-by-one to all of the companies that have your personal information. The CCPA lets you designate an "authorized agent" to contact companies about your data for you.</p>
+
+    <p>This Consumer Reports experiment is designed to test how we might relieve consumers of the onerous data request process by sending data requests to corporations for you. Just provide us with your contact information and give us permission. We'll do the rest.</p>
+
+    <h2>How it works</h2>
+
+    <ol>
+        <li>Sign up here with your legal name, California address, email address, and mobile phone number. Unfortunately we cannot accommodate landline phones at this time.</li>
+        <li>Sign a document giving Consumer Reports permission to act as your authorized agent.</li>
+        <li>Consumer Reports will send data requests to participating companies requesting that companies give you access to the personal information they have about you.</li>
+        <li>We'll keep you updated on our progress and what we're learning about the data economy via regular emails.</li>
+    </ol>
+</div>
+<div class="column">
+    <h2>Sign up to Volunteer</h2>
 
     <form class="sign-up" method="POST" action="/member/sign-up">
         <div class="contact first-name">
-            <label for="first-name">First Name</label>
+            <label for="first-name">Legal First Name</label>
             <input id="first-name" type="text" name="first-name" placeholder="First Name" required="true">
         </div><!--
 
         --><div class="contact last-name">
-            <label for="last-name">Last Name</label>
+            <label for="last-name">Legal Last Name</label>
             <input id="last-name" type="text" name="last-name" placeholder="Last Name" required="true">
         </div><!--
 
@@ -102,10 +101,10 @@
         <p>We appreciate your consent!</p>
 
         <div class="controls">
-            <input type="submit" value="Volunteer">
+            <input id="volunteer" type="submit" value="Volunteer">
         </div>
     </form>
-	{{/success}}
 </div>
+{{/success}}
 
 {{>common-bottom}}
