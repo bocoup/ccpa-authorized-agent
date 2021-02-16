@@ -2,30 +2,39 @@
 
 {{#success}}
 <div id="success">
-    <h2>Thanks for signing up! You have a few more steps to enroll</h2>
+    <h2>Thanks for signing up!</h2>
+    <p>By joining this study, you are doing your part to help advance data rights for all consumers. We’re so grateful for your help.</p>
+    <p>There are two more steps to take to complete your enrollment:</p>
     <ol>
-        <li>Email: A confirmation email from us should be in your inbox. Open the email and click the confirmation link.</li>
-        <li>Mobile Phone Number: A text message with a confirmation code will be sent once you have confirmed your email address.</li>
-        <li>If you don't receive a confirmation email or text within 10 minutes, let us know at datarightsstudy@cr.org.</li>
-        <li>Check your email and use DocuSign to sign a document authorizing Consumer Reports to make data requests for you.</li>
+        <li>Check your email to confirm your email address and mobile phone number.</li>
+        <ul>
+            <li>An email titled <b>Confirm your email & phone with Consumer Reports</b> should be in your inbox. Open the email and click the confirmation link.</li>
+            <li>When you click the email confirmation link, a text message with a confirmation code will be sent to your mobile phone. You can enter your unique code on the web confirmation screen.</li>
+        </ul>
+        <br>
+        <li>Check your inbox for an email titled <b>Sign the Authorization Form</b>, which links to an authorization you can sign to give Consumer Reports permission to make data requests for you.</li>
     </ol>
-    <p>Your onboarding is complete!</p>
+    <p>After confirming your email and phone and signing the authorization form, your onboarding is complete! You will receive an email confirming that you have successfully enrolled in the study.</p>
+    <p> If you have any trouble with this process, let us know at datarightsstudy@cr.org.</p>
 </div>
 {{/success}}
 {{^success}}
 <div class="column">
     <h1>Volunteer to test the Authorized Agent feature of California's new privacy law!</h1>
 
-    <p>The California Consumer Privacy Act (CCPA) gives you, as a California consumer, the right to access the personal information companies have about you. Best of all, you don't have to go one-by-one to all of the companies that have your personal information. The CCPA lets you designate an "authorized agent" to contact companies about your data for you.</p>
+    <p>The California Consumer Privacy Act (CCPA) gives you, as a California consumer, the right to access the personal information companies have about you. Best of all, you don’t have to go one-by-one to all of the companies that have your personal information. The CCPA lets you designate an “authorized agent” to contact companies about your data for you.</p>
 
-    <p>This Consumer Reports experiment is designed to test how we might relieve consumers of the onerous data request process by sending data requests to corporations for you. Just provide us with your contact information and give us permission. We'll do the rest.</p>
+    <p>This Consumer Reports research is designed to test how we might relieve consumers of the burden of making data requests by sending requests to companies for you. Just provide us with your contact information and give us your permission. We’ll do the rest.</p>
 
     <h2>How it works</h2>
 
     <ol>
         <li>Sign up here with your legal name, California address, email address, and mobile phone number. Unfortunately we cannot accommodate landline phones at this time.</li>
-        <li>Sign a document giving Consumer Reports permission to act as your authorized agent.</li>
-        <li>Consumer Reports will send data requests to participating companies requesting that companies give you access to the personal information they have about you.</li>
+        <br>
+        <li>Sign an authorization form giving Consumer Reports permission to act as your authorized agent.</li>
+        <br>
+        <li>Indicate which companies might have your information. We’ll then send data requests to some participating companies requesting that they give you access to your data.</li>
+        <br>
         <li>We'll keep you updated on our progress and what we're learning about the data economy via regular emails.</li>
     </ol>
 </div>
@@ -74,31 +83,22 @@
         </div>
 
         <div class="consent consent-text">
+            <p><b>To enroll in the study, please consent to the following:</b></p>
             <input type="checkbox" id="consent-text" required="true">
-            <label for="consent-text">I agree to receive text messages to my mobile device as part of this program.</label>
+            <label for="consent-text">I agree to receive an automated text message to my mobile device as part of this program.  Message & data rates may apply and I can text STOP to cancel or HELP for help. I agree to the terms of the Consumer Reports <a href="https://volunteer.consumerreports.org/sms_text_notification_terms">SMS/Text Notification Terms</a> and <a href="https://www.consumerreports.org/cro/sms/sms-text-notification-privacy-policy.htm">Privacy Policy</a>.</label>
         </div>
 
         <div class="consent consent-agent">
             <input type="checkbox" id="consent-agent" required="true">
-            <label for="consent-agent">I agree to have a Consumer Reports team member act as my authorized agent, to send data access requests on my behalf, and to share what happens with my requests with their team for the purpose of consumer protection policy strategy.</label>
-        </div>
-
-        <div class="consent consent-response">
-            <input type="checkbox" id="consent-response" required="true">
-            <label for="consent-response">I agree to have a Consumer Reports team member share how companies respond to my data requests, and what data formats and field types they use, with the general public.</label>
-        </div>
-
-        <div class="consent consent-email">
-            <input type="checkbox" id="consent-email" required="true">
-            <label for="consent-email">I agree to receive regular emails checking in with me about how the program is going, and covering program updates, news, and analysis about California data privacy.</label>
+            <label for="consent-agent">I agree to have a Consumer Reports team member act as my authorized agent, to send data access requests on my behalf, and to share what happens with my requests with their team for consumer protection purposes. I further agree that Consumer Reports can share how companies respond to my data requests with the general public. Personally-identifiable information about me will remain private.</label>
         </div>
 
         <div class="consent consent-policies">
             <input type="checkbox" id="consent-policies" required="true">
-            <label for="consent-policies">I agree to the terms of Consumer Reports <a href="https://www.consumerreports.org/cro/customerservice/privacy-policy/highlights/index.htm"> Privacy Policy</a>, <a href="https://www.consumerreports.org/cro/2015/01/user-agreement/index.htm">User Agreement, </a><a href="https://www.consumerreports.org/cro/sms/sms-text-notification-privacy-policy.htm">SMS/Text Notification Terms</a> and <a href="https://www.consumerreports.org/cro/sms/sms-text-notification-privacy-policy.htm">SMS/Text Privacy Policy</a> </label>
+            <label for="consent-policies">I agree to the terms of Consumer Reports <a href="https://www.consumerreports.org/cro/customerservice/privacy-policy/highlights/index.htm"> Privacy Policy</a> and <a href="https://www.consumerreports.org/cro/2015/01/user-agreement/index.htm">User Agreement</a>.</label>
         </div>
 
-        <p>We appreciate your consent!</p>
+        <p>Thank you for your consent!</p>
 
         <div class="controls">
             <input id="volunteer" type="submit" value="Volunteer">
