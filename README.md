@@ -13,7 +13,7 @@ Dependencies:
 
 - [Docker](https://www.docker.com/) version 19 or later
 
-Run the following command:
+After setting up the environment variables as described below, run the following command:
 
     $ docker-compose up
 
@@ -47,8 +47,12 @@ If you're looking for a starting point you can use the example PoA, which is bas
 
 ## Environment variables
 
-The application requires the following operating system environment variables
-to be set:
+Before you can start the app, you must set up the environment variables. This will allow you to specify which Twilio or Mailgun accounts you would like to use. 
+
+- Duplicate .env-example and rename it to .env
+- Replace the placeholder values with real values. To use the same Twilio and Mailgun as production, you can retrieve the values from Heroku. Go to the settings page in Heroku and click "reveal config vars."
+
+All required environment variables are described below:
 
 Name                         | Purpose
 -----------------------------|--------
