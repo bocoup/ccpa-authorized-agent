@@ -56,8 +56,7 @@ suite('integration', () => {
     await driver.findElement(By.css('#address-city')).sendKeys('Santa Monica');
     await driver.findElement(By.css('#address-zipcode')).sendKeys('90410');
     await driver.findElement(By.css('#email')).sendKeys('tessa.tester@example.com');
-    await driver.findElement(By.css('#phone')).sendKeys('206-643-7362');
-    // await driver.findElement(By.css('#phone')).sendKeys('555-555-5555');
+    await driver.findElement(By.css('#phone')).sendKeys('555-555-5555');
     await driver.findElement(By.css('#consent-text')).click();
     await driver.findElement(By.css('#consent-agent')).click();
     await driver.findElement(By.css('#consent-response')).click();
