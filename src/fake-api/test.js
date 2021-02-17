@@ -57,8 +57,7 @@ suite('integration', () => {
     await driver.findElement(By.css('#address-city')).sendKeys('Santa Monica');
     await driver.findElement(By.css('#address-zipcode')).sendKeys('90410');
     await driver.findElement(By.css('#email')).sendKeys('tessa.tester@example.com');
-    await driver.findElement(By.css('#phone')).sendKeys('206-643-7362');
-    // await driver.findElement(By.css('#phone')).sendKeys('555-555-5555');
+    await driver.findElement(By.css('#phone')).sendKeys('206-555-1234');
     await driver.findElement(By.css('#consent-text')).click();
     await driver.findElement(By.css('#consent-agent')).click();
     await driver.findElement(By.css('#consent-policies')).click();
@@ -80,7 +79,7 @@ suite('integration', () => {
     await driver.wait(driver.findElement(By.css('#part-2 h1')).isDisplayed());
     assert.strictEqual(await verificationSmsApproved(), true);
     email = await getLatestEmail();
-    assert.match(email, /Thank you for enrolling in the Consumer Reports Authorized Agent study/);
-    assert.match(email, /<a href="https:\/\/na4\.docusign\.net\/Member\/PowerFormSigning\.aspx/);
+    assert.match(email, /The next step to enroll is to sign a document that authorizes Consumer Reports to act as your authorized agent/);
+    assert.match(email, /<a href="https:\/\/na3\.docusign\.net\/Member\/PowerFormSigning\.aspx/);
   });
 });
