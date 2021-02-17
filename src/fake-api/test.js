@@ -61,12 +61,10 @@ suite('integration', () => {
     // await driver.findElement(By.css('#phone')).sendKeys('555-555-5555');
     await driver.findElement(By.css('#consent-text')).click();
     await driver.findElement(By.css('#consent-agent')).click();
-    await driver.findElement(By.css('#consent-response')).click();
-    await driver.findElement(By.css('#consent-email')).click();
     await driver.findElement(By.css('#consent-policies')).click();
     await driver.findElement(By.css('#volunteer')).click();
     const successText = await driver.findElement(By.css('#success h2')).getText();
-    assert.strictEqual(successText, 'Thanks for signing up! You have a few more steps to enroll');
+    assert.strictEqual(successText, 'Thanks for signing up!');
     
     // Click link to verify email
     let email = await getLatestEmail();
