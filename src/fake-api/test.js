@@ -26,7 +26,7 @@ const verificationSmsApproved = async () => {
   return JSON.parse(rawJson);
 };
 
-const setupTimeout = 15 * 1000;
+const setupTimeout = 90000;
 
 suite('integration', () => {
   let driver;
@@ -40,13 +40,14 @@ suite('integration', () => {
       .build();
   });
 
-  suiteTeardown(async () => {
+  suiteTeardown(async function () {
+    this.timeout(6000);
     await clearFakeApiState();
     driver && await driver.quit();
   });
 
   test('completes signup flow', async function () {
-    this.timeout(15000);
+    this.timeout(90000);
 
     // Complete form
     await driver.get(process.env.APP_DOMAIN);
