@@ -26,7 +26,7 @@ const verificationSmsApproved = async () => {
   return JSON.parse(rawJson);
 };
 
-const setupTimeout = 15 * 1000;
+const setupTimeout = 90000;
 
 suite('integration', () => {
   let driver;
@@ -40,13 +40,14 @@ suite('integration', () => {
       .build();
   });
 
-  suiteTeardown(async () => {
+  suiteTeardown(async function () {
+    this.timeout(6000);
     await clearFakeApiState();
     driver && await driver.quit();
   });
 
   test('completes signup flow', async function () {
-    this.timeout(15000);
+    this.timeout(90000);
 
     // Complete form
     await driver.get(process.env.APP_DOMAIN);
@@ -56,15 +57,13 @@ suite('integration', () => {
     await driver.findElement(By.css('#address-city')).sendKeys('Santa Monica');
     await driver.findElement(By.css('#address-zipcode')).sendKeys('90410');
     await driver.findElement(By.css('#email')).sendKeys('tessa.tester@example.com');
-    await driver.findElement(By.css('#phone')).sendKeys('555-555-5555');
+    await driver.findElement(By.css('#phone')).sendKeys('206-555-1234');
     await driver.findElement(By.css('#consent-text')).click();
     await driver.findElement(By.css('#consent-agent')).click();
-    await driver.findElement(By.css('#consent-response')).click();
-    await driver.findElement(By.css('#consent-email')).click();
     await driver.findElement(By.css('#consent-policies')).click();
     await driver.findElement(By.css('#volunteer')).click();
     const successText = await driver.findElement(By.css('#success h2')).getText();
-    assert.strictEqual(successText, 'Thanks for signing up! You have a few more steps to enroll');
+    assert.strictEqual(successText, 'Thanks for signing up!');
     
     // Click link to verify email
     let email = await getLatestEmail();
@@ -80,7 +79,7 @@ suite('integration', () => {
     await driver.wait(driver.findElement(By.css('#part-2 h1')).isDisplayed());
     assert.strictEqual(await verificationSmsApproved(), true);
     email = await getLatestEmail();
-    assert.match(email, /Thank you for enrolling in the Consumer Reports Authorized Agent study/);
-    assert.match(email, /<a href="https:\/\/na4\.docusign\.net\/Member\/PowerFormSigning\.aspx/);
+    assert.match(email, /The next step to enroll is to sign a document that authorizes Consumer Reports to act as your authorized agent/);
+    assert.match(email, /<a href="https:\/\/na3\.docusign\.net\/Member\/PowerFormSigning\.aspx/);
   });
 });
